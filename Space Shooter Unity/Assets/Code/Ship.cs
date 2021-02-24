@@ -9,6 +9,8 @@ public abstract class Ship : MonoBehaviour
     public Transform projectileSpawnPoint;
     public AudioSource hitSound;
     public AudioSource fireProjectileSound;
+    public GameObject thrustParticlePrefab;
+    public Transform particleSpawnPoint;
 
     public float acceleration;
     public float maxSpeed;
@@ -37,6 +39,10 @@ public abstract class Ship : MonoBehaviour
         rigidBody2D.AddForce(transform.up * acceleration); //Add force in the direction we're facing
         currentSpeed = maxSpeed; //Set our speed to our max speed
         //TODO: Create particle effects
+        float randomX = Random.Range(-0.1f, 0.1f);
+        float randomY = Random.Range(-0.1f, 0.1f);
+        Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
+        Instantiate(thrustParticlePrefab, spawnPosition, transform.rotation);
     }
 
     public void FireProjectile()
@@ -60,7 +66,8 @@ public abstract class Ship : MonoBehaviour
 
     public void Explode()
     {
-        Instantiate(Resources.Load("Explosion"), transform.position, transform.rotation);
+        Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
+        ScreenShaker.Instance.ShakeScreen();
         Destroy(gameObject);
     }
 }
