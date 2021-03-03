@@ -49,6 +49,7 @@ public abstract class Ship : MonoBehaviour
     public void FireProjectile()
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
         projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
         projectile.Init(this.gameObject);
         fireProjectileSound.Play();
