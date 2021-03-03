@@ -20,10 +20,12 @@ public abstract class Ship : MonoBehaviour
 
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
+    [HideInInspector] public bool canShoot;
 
     public void Awake()
     {
         currentArmor = maxArmor;
+        canShoot = true;
     }
 
     void FixedUpdate()
@@ -38,7 +40,6 @@ public abstract class Ship : MonoBehaviour
     {
         rigidBody2D.AddForce(transform.up * acceleration); //Add force in the direction we're facing
         currentSpeed = maxSpeed; //Set our speed to our max speed
-        //TODO: Create particle effects
         float randomX = Random.Range(-0.1f, 0.1f);
         float randomY = Random.Range(-0.1f, 0.1f);
         Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
@@ -52,6 +53,14 @@ public abstract class Ship : MonoBehaviour
         projectile.Init(this.gameObject);
         fireProjectileSound.Play();
         Destroy(projectile, 4);
+        StartCoroutine(FireRateBuffer());
+    }
+
+    private IEnumerator FireRateBuffer()
+    {
+        canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 
     public void TakeDamage(int damageToTake)
@@ -62,12 +71,19 @@ public abstract class Ship : MonoBehaviour
         {
             Explode();
         }
+
+        if (GetComponent<PlayerShip>())
+        {
+            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+        }
     }
 
     public void Explode()
     {
         Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
-        ScreenShaker.Instance.ShakeScreen();
+        //ScreenShaker.Instance.ShakeScreen();
+        ScreenShakeManager.Instance.ShakeScreen();
+        EnemyShipSpawner.Instance.CountEnemyShips();
         Destroy(gameObject);
     }
 }

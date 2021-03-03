@@ -14,21 +14,25 @@ public class EnemyShip : Ship
         target = FindObjectOfType<PlayerShip>().transform;
     }
 
-    void Update()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (canShootPlayer)
+        if (collision.gameObject.GetComponent<PlayerShip>())
         {
-            ShootPlayer();
-        }
-        if (canFlyTowardsPlayer)
-        {
-            FlyTowardsPlayer();
+            Explode();
+            collision.gameObject.GetComponent<PlayerShip>().TakeDamage(1);
         }
     }
 
-    void ShootPlayer()
+    void Update()
     {
-
+        if (canShootPlayer && canShoot)
+        {
+            FireProjectile();
+        }
+        if (canFlyTowardsPlayer && target != null)
+        {
+            FlyTowardsPlayer();
+        }
     }
 
     void FlyTowardsPlayer()

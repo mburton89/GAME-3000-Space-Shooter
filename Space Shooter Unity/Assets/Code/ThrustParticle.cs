@@ -10,8 +10,8 @@ public class ThrustParticle : MonoBehaviour
 
     private void Start()
     {
-        _fadeSpeed = Random.Range(0.01f, 0.2f);
-        _scale = Random.Range(0.1f, 0.2f);
+        _fadeSpeed = Random.Range(0.01f, 0.15f);
+        _scale = Random.Range(0.1f, 0.3f);
         transform.localScale = new Vector3(_scale, _scale, 1);
     }
 
