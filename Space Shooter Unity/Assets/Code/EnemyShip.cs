@@ -37,8 +37,11 @@ public class EnemyShip : Ship
 
     void FlyTowardsPlayer()
     {
-        Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
-        transform.up = directionToFace;
-        Thrust();
+        if (target != null)
+        {
+            Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
+            transform.up = directionToFace;
+            Thrust();
+        }
     }
 }

@@ -72,6 +72,11 @@ public abstract class Ship : MonoBehaviour
         {
             Explode();
         }
+
+        if (GetComponent<PlayerShip>())
+        {
+            HUD.Instance.UpdateHealthBar((int)currentArmor, maxArmor);
+        }
     }
 
     public void Explode()
@@ -80,6 +85,12 @@ public abstract class Ship : MonoBehaviour
         //ScreenShaker.Instance.ShakeScreen();
         ScreenShakeManager.Instance.ShakeScreen();
         EnemyShipSpawner.Instance.CountEnemyShips();
+
+        if (GetComponent<PlayerShip>())
+        {
+            GameplayManager.Instance.HandlePlayerDeath();
+        }
+
         Destroy(gameObject);
     }
 }

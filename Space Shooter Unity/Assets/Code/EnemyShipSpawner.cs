@@ -30,6 +30,7 @@ public class EnemyShipSpawner : MonoBehaviour
         if (currentShips == 1)
         {
             currentWave++;
+            HUD.Instance.UpdateWaveText(currentWave);
             SpawnWaveOfShips();
         }
     }
