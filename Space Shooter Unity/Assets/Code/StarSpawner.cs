@@ -19,7 +19,7 @@ public class StarSpawner : MonoBehaviour
             float randY = Random.Range(-_maxY, _maxY);
             float randZ = Random.Range(_minZ, _maxZ);
             Vector3 spawnPosition = new Vector3(randX, randY, randZ);
-            Instantiate(_starPrefab, spawnPosition, transform.rotation, null);
+            Instantiate(_starPrefab, spawnPosition, transform.rotation, transform);
         }
     }
 }

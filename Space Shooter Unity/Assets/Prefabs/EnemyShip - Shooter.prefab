@@ -167,9 +167,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5625106571259127031}
   - component: {fileID: 5625106571259127024}
-  - component: {fileID: 5625106571259127025}
   - component: {fileID: 5625106571259127026}
   - component: {fileID: 4080232680355993967}
+  - component: {fileID: 6323168656124706024}
   m_Layer: 0
   m_Name: EnemyShip - Shooter
   m_TagString: Untagged
@@ -186,7 +186,7 @@ Transform:
   m_GameObject: {fileID: 5625106571259127021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.62, y: 2.28, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 5625106571474510894}
   - {fileID: 6745649965119371581}
@@ -235,8 +235,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b1ba1459b073e7a499f66e6ac6ac50a6, type: 3}
-  m_Color: {r: 0.98305035, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c4ab53f3da1eb454d90f0bca1d52ffca, type: 3}
+  m_Color: {r: 1, g: 0, b: 0.36862746, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -246,52 +246,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &5625106571259127025
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5625106571259127021}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
-    newSize: {x: 1.28, y: 1.28}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0, y: -0.22999999}
-      - {x: 0.01, y: -0.25}
-      - {x: 0.07, y: -0.29}
-      - {x: 0.53, y: -0.59}
-      - {x: 0.59999996, y: -0.64}
-      - {x: 0.64, y: -0.64}
-      - {x: 0.64, y: 0.22999999}
-      - {x: 0.62, y: 0.25}
-      - {x: 0.11, y: 0.59}
-      - {x: 0.04, y: 0.64}
-      - {x: -0.04, y: 0.64}
-      - {x: -0.06, y: 0.63}
-      - {x: -0.12, y: 0.59}
-      - {x: -0.5, y: 0.32999998}
-      - {x: -0.56, y: 0.29}
-      - {x: -0.64, y: 0.22999999}
-      - {x: -0.64, y: -0.64}
-      - {x: -0.59999996, y: -0.64}
-      - {x: -0.55, y: -0.61}
-      - {x: -0.19999999, y: -0.37}
-      - {x: -0.08, y: -0.29}
 --- !u!50 &5625106571259127026
 Rigidbody2D:
   serializedVersion: 4
@@ -339,8 +293,50 @@ MonoBehaviour:
   projectileSpeed: 50
   currentSpeed: 0
   currentArmor: 0
+  canShoot: 0
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
+--- !u!60 &6323168656124706024
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5625106571259127021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.7142857, y: 1.3571428}
+    newSize: {x: 1.28, y: 1.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.37599277, y: 0.6785716}
+      - {x: 0.39276662, y: 0.67188084}
+      - {x: 0.38962913, y: -0.023857236}
+      - {x: 0.024771124, y: 0.30370605}
+      - {x: -0.32803047, y: 0.056324005}
+      - {x: -0.3998164, y: 0.70533454}
+      - {x: -0.52906203, y: 0.7108308}
+      - {x: -0.6764908, y: -0.24512208}
+      - {x: -0.8754258, y: -0.49768317}
+      - {x: -0.8571429, y: -0.67857146}
+      - {x: 0.8571429, y: -0.67857146}
+      - {x: 0.8789034, y: -0.532655}
+      - {x: 0.6694145, y: -0.339316}
+      - {x: 0.64359856, y: 0.23510826}
+      - {x: 0.56943727, y: 0.32359922}
+      - {x: 0.5358037, y: 0.67857146}
 --- !u!1 &5625106571474510895
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,6 +85,12 @@ public abstract class Ship : MonoBehaviour
         //ScreenShaker.Instance.ShakeScreen();
         ScreenShakeManager.Instance.ShakeScreen();
         EnemyShipSpawner.Instance.CountEnemyShips();
+
+        if (GetComponent<PlayerShip>())
+        {
+            GameManager.Instance.HandlePlayerDestroyed();
+        }
+
         Destroy(gameObject);
     }
 }
