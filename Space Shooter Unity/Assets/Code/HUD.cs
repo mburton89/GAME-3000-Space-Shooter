@@ -24,6 +24,6 @@ public class HUD : MonoBehaviour
 
     public void UpdateWaveText(int currentWave)
     {
-        waveText.SetText(currentWave.ToString());
+        waveText.SetText("Wave: " + currentWave.ToString());
     }
 }
