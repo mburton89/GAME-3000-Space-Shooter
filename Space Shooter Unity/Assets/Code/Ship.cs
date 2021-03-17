@@ -72,11 +72,6 @@ public abstract class Ship : MonoBehaviour
         {
             Explode();
         }
-
-        if (GetComponent<PlayerShip>())
-        {
-            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
-        }
     }
 
     public void Explode()
