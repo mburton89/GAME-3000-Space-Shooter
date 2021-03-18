@@ -47,7 +47,7 @@ public class EnemyShipSpawner : MonoBehaviour
             float zRotation = Random.Range(0, 360);
             SpawnPivot.eulerAngles = new Vector3(0, 0, zRotation);
 
-            Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, transform);
+            Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
         }
     }
 }
