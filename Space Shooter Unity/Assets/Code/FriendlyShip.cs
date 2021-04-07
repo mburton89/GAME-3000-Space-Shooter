@@ -18,7 +18,8 @@ public class FriendlyShip : Ship
     {
         if (collision.gameObject.GetComponent<EnemyShip>())
         {
-            Explode();
+            //Explode();
+            currentArmor--;
             collision.gameObject.GetComponent<EnemyShip>().TakeDamage(1);
         }
     }
