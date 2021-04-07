@@ -6,7 +6,8 @@ public class PlayerShip : Ship
 
 
 
-  
+
+
 
 
 
@@ -44,6 +45,7 @@ public class PlayerShip : Ship
 
     private IEnumerator DashCo()
     {
+        Instantiate(dust, new Vector2(gameObject.transform.position.x, gameObject.transform.position.y), Quaternion.identity);
         canTakeDamage = false;
         acceleration = acceleration * 4;
         maxSpeed = maxSpeed * 4;
