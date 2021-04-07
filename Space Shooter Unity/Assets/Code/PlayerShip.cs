@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : Ship
+
+
+
+  
+
+
+
+
+
 {
     void Update()
     {
@@ -21,6 +30,28 @@ public class PlayerShip : Ship
         {
             FireProjectile();
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Dash();
+        }
+    }
+
+    void Dash()
+    {
+        StartCoroutine(DashCo());
+    }
+
+    private IEnumerator DashCo()
+    {
+        canTakeDamage = false;
+        acceleration = acceleration * 4;
+        maxSpeed = maxSpeed * 4;
+        yield return new WaitForSeconds(0.6f);
+        canTakeDamage = true;
+        acceleration = acceleration / 4;
+        maxSpeed = maxSpeed / 4;
+
     }
 
     void FollowMouse()
@@ -29,4 +60,11 @@ public class PlayerShip : Ship
         Vector2 directionToFace = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); //creates direction based on positon of ship and mouse cursor 
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
     }
+
+
+
+
+
+
+
 }

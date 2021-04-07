@@ -17,17 +17,23 @@ public abstract class Ship : MonoBehaviour
     public int maxArmor;
     public float fireRate;
     public float projectileSpeed;
+    public float dashspeed;
+    public float dashtime;
+    public float startDashTime;
+    public int direction;
 
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+    [HideInInspector] public bool canTakeDamage;
+
 
     public void Awake()
     {
         currentArmor = maxArmor;
         canShoot = true;
     }
-
+   
     void FixedUpdate()
     {
         if (rigidBody2D.velocity.magnitude > maxSpeed)
@@ -66,18 +72,22 @@ public abstract class Ship : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-        currentArmor -= damageToTake;
-        hitSound.Play();
-        if (currentArmor <= 0)
-        {
-            Explode();
-        }
 
-        if (GetComponent<PlayerShip>())
-        {
-            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+
+        if (canTakeDamage == true)
+        { currentArmor -= damageToTake;
+            hitSound.Play();
+            if (currentArmor <= 0)
+            {
+                Explode();
+            }
+
+            if (GetComponent<PlayerShip>())
+            {
+                HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+            }
         }
-    }
+}
 
     public void Explode()
     {
@@ -93,4 +103,9 @@ public abstract class Ship : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+
+
+
+
 }
