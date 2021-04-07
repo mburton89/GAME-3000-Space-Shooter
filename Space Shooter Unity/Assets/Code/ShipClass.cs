@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ShipClass : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float dashspeed;
+    public float dashtime;
+    public float startDashTime;
+    public int direction;
+     void Start()
     {
-        
+
+
+           
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
