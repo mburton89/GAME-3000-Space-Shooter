@@ -4,31 +4,27 @@ using UnityEngine;
 
 public class TrailModifier : MonoBehaviour
 {
-    /*
-     
-    Has: 
-        -collision sprite prefab: "TrailCollision"
-            -2D circle collider
-        -frame amount until next spawn
-        -collision sprite prefab: "TrailDamage"
-            -2D circle collider
-       
-    Does:
-        -detects for a collision between TrailCollision and PlayerShip 
-        -spawn a TrailCollision prefab every x frames
-        -detects time of life for colliding TrailCollion
-            -detect Trail Collision with half of that time, 
-             3/4 of that time, and 1/4 of that time: "A", "B", and "C"
-            -detect distance between A and playerShip: "D" 
-            -detect distance between B and C: "E"
-            -find the average distance between D and E: "F"
-        -create TrailDamage with a diameter of F
-        -damage EnemyShips inside of TrailDamage
-        
+    public TrailAttack trailAttackPrefab;
+    public Transform trailCollisionSpawnPoint;
+    public TrailCollision trailCollisionPrefab;
+    [HideInInspector] public Vector3 attackSpawn;
 
+    void Update()
+    {
+        TrailCollision trailColl = Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation) as TrailCollision;
+        Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation);
+    }
 
+    public void sendBackParameter(GameObject ColliderA, double timeSinceInitializationA, double halfTimeSinceInitialization, Vector3 pointA)
+    {
+        GetComponent<TrailCollision>().returnSelf(ColliderA, timeSinceInitializationA, halfTimeSinceInitialization, pointA);
+    }
 
+    public void createTrailAttack(GameObject ColliderA, GameObject ColliderB, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA, Vector3 pointB)
+    {
+        attackSpawn = new Vector3(pointA.x - pointB.x, pointA.y - pointB.y);
 
-
-    */
+        TrailAttack attack = Instantiate(trailAttackPrefab, attackSpawn, transform.rotation) as TrailAttack;
+        Instantiate(trailAttackPrefab, attackSpawn, transform.rotation);
+    }
 }
