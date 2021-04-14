@@ -61,6 +61,19 @@ public abstract class Ship : MonoBehaviour
         Destroy(projectile, 4);
         StartCoroutine(FireRateBuffer());
     }
+
+    public void FireProjectile(Vector3 Direction)
+    {
+        //TODO pass in Direction
+        Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        projectile.rigidBody2D.AddForce(Direction * projectileSpeed);
+        projectile.Init(this.gameObject);
+        fireProjectileSound.Play();
+        Destroy(projectile, 4);
+        StartCoroutine(FireRateBuffer());
+    }
+
     public void FireFlames()
     {
         Projectile projectile = Instantiate(FlamesPrefab, projectileSpawnPoint.position, transform.rotation);
