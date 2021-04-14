@@ -17,10 +17,12 @@ public abstract class Ship : MonoBehaviour
     public int maxArmor;
     public float fireRate;
     public float projectileSpeed;
+    public int maxAmmo; // Maximum amount of shots that can be fired.
 
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+    [HideInInspector] public int currentAmmo; // Count of how much shots are availble.
 
     public void Awake()
     {

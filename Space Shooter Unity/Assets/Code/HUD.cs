@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour
 
     public Image healthBar;
     public TextMeshProUGUI waveText;
+    public TextMeshProUGUI limiterText;
 
     void Awake()
     {
@@ -25,5 +26,10 @@ public class HUD : MonoBehaviour
     public void UpdateWaveText(int currentWave)
     {
         waveText.SetText("Wave: " + currentWave.ToString());
+    }
+
+    public void UpdateAmmoCountText(int currentAmmo, int maxAmmo)
+    {
+        limiterText.SetText("Projectiles Fired: " + currentAmmo + "/" + maxAmmo);
     }
 }

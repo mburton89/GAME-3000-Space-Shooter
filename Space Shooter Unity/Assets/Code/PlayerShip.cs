@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class PlayerShip : Ship
 {
+
+    public bool hasBulletLimit; //on/off switch for the bullet limit challenege.
+
+    void Start()
+    {
+        currentAmmo = 0;
+        HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
+    }
+
     void Update()
     {
         FollowMouse();
@@ -19,7 +28,19 @@ public class PlayerShip : Ship
 
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
-            FireProjectile();
+            if (hasBulletLimit) //if the bullet limiter is checked.
+            {
+                if (currentAmmo < maxAmmo) //if the current ammo is less than the max ammo.
+                {
+                    FireProjectile();
+                    currentAmmo++;
+                    HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
+                }
+            }
+            else
+            {
+                FireProjectile();
+            }
         }
     }
 
