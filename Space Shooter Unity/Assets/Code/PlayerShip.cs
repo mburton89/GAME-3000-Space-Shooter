@@ -3,7 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : Ship
+
 {
+    [HideInInspector] public bool canCollideWithTrail;
+
+    private void Awake()
+    {
+        canCollideWithTrail = true;
+    }
     void Update()
     {
         FollowMouse();

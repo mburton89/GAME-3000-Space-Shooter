@@ -135,7 +135,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 1953311800686717413}
-  trailModifier: {fileID: 0}
+  trailCollisionPrefab: {fileID: 1111301393955562751}
+  attackSpawn: {x: 0, y: 0, z: 0}
+  trailAttackPrefab: {fileID: -7774005647524099861, guid: 3c2156026de4c594dbbe81ab19734740, type: 3}
   initializationTime: 0
   timeSinceInitialization: 0
   halfTimeSinceInitialization: 0
+  stopChecking: 0

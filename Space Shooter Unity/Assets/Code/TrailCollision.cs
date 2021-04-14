@@ -11,6 +11,7 @@ public class TrailCollision : MonoBehaviour
     [HideInInspector] public double initializationTime;
     [HideInInspector] public double timeSinceInitialization;
     [HideInInspector] public double halfTimeSinceInitialization;
+    [HideInInspector] public bool triggerCheck = false;
     
     private void Start()
     {
@@ -24,32 +25,62 @@ public class TrailCollision : MonoBehaviour
         halfTimeSinceInitialization = timeSinceInitialization / 2;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5))
+        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail)
         {
-            Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
-            GameObject ColliderA = this.gameObject;
-            print(ColliderA);
-            collision.GetComponent<TrailCollision>().findPointB(ColliderA, timeSinceInitialization, halfTimeSinceInitialization, position);
+            collision.GetComponent<PlayerShip>().canCollideWithTrail = false;
+            //Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
+            //GameObject ColliderA = this.gameObject;
+
+            triggerCheck = true;
+
+            TrailCollision[] allTrailCollisions = FindObjectsOfType<TrailCollision>();
+            print("amount " + allTrailCollisions.Length);
+            foreach (TrailCollision trailCollision in allTrailCollisions)
+            {
+                trailCollision.findPointB(this.gameObject, timeSinceInitialization, halfTimeSinceInitialization, gameObject.transform.position);
+            }
+
+            Destroy(gameObject);
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PlayerShip>())
+        {
+            //triggerCheck = false;
+            collision.GetComponent<PlayerShip>().canCollideWithTrail = true;
         }
     }
 
     public void findPointB(GameObject ColliderA, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA)
     {
-        if ((timeSinceInitialization - halfTimeSinceInitialization) <= 0.00001)
+        if ((timeSinceInitialization - timeSinceInitHalf) <= 0.00000000000001)
         {
-            Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
-            GameObject ColliderB = this.gameObject;
+            print("If statement passed");    
+            
+            
+            //Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
+            //GameObject ColliderB = this.gameObject;
 
-            GetComponent<TrailCollision>().createTrailAttack(ColliderA, ColliderB, timeSinceInit, timeSinceInitHalf, pointA, position);
+            //createTrailAttack(ColliderA, this.gameObject, timeSinceInit, timeSinceInitHalf, pointA, gameObject.transform.position);
         }
     }
 
     public void createTrailAttack(GameObject ColliderA, GameObject ColliderB, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA, Vector3 pointB)
     {
         attackSpawn = new Vector3(pointA.x - pointB.x, pointA.y - pointB.y);
+
+        //print(ColliderA);
+        //print(ColliderB);
+        //print(timeSinceInit);
+        //print(timeSinceInitHalf);
+        //print(pointA);
+        //print(pointB);
+        //print("Everything passed");
+
 
         TrailAttack attack = Instantiate(trailAttackPrefab, attackSpawn, transform.rotation) as TrailAttack;
         Instantiate(trailAttackPrefab, attackSpawn, transform.rotation);
