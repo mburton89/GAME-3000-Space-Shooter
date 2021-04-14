@@ -37,7 +37,7 @@ public class PlayerShip : Ship
                     HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
                 }
             }
-            else//if the bullet limiter is not checked
+            else//if the bullet limiter is not cheecked
             {
                 FireProjectile();
             }
