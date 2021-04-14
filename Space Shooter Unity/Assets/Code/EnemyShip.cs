@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyShip : Ship
 {
     public bool canShootPlayer;
+    public bool canShootFlames;
     public bool canFlyTowardsPlayer;
     Transform target;
 
@@ -32,6 +33,10 @@ public class EnemyShip : Ship
         if (canFlyTowardsPlayer && target != null)
         {
             FlyTowardsPlayer();
+        }
+        if (canShootFlames)
+        {
+            FireFlames();
         }
     }
 

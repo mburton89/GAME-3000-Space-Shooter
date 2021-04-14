@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Ship : MonoBehaviour
 {
     public Rigidbody2D rigidBody2D;
+    public Projectile FlamesPrefab;
     public Projectile projectilePrefab;
     public Transform projectileSpawnPoint;
     public AudioSource hitSound;
@@ -21,6 +22,7 @@ public abstract class Ship : MonoBehaviour
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+
 
     public void Awake()
     {
@@ -49,6 +51,16 @@ public abstract class Ship : MonoBehaviour
     public void FireProjectile()
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        projectile.Init(this.gameObject);
+        fireProjectileSound.Play();
+        Destroy(projectile, 4);
+        StartCoroutine(FireRateBuffer());
+    }
+    public void FireFlames()
+    {
+        Projectile projectile = Instantiate(FlamesPrefab, projectileSpawnPoint.position, transform.rotation);
         Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
         projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
         projectile.Init(this.gameObject);
