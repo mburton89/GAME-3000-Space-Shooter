@@ -17,15 +17,19 @@ public abstract class Ship : MonoBehaviour
     public int maxArmor;
     public float fireRate;
     public float projectileSpeed;
+    public float chargePower;
 
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+    [HideInInspector] public bool canMove;
+    [HideInInspector] public bool leCharge;
 
     public void Awake()
     {
         currentArmor = maxArmor;
         canShoot = true;
+        canMove = true;
     }
 
     void FixedUpdate()
@@ -33,6 +37,10 @@ public abstract class Ship : MonoBehaviour
         if (rigidBody2D.velocity.magnitude > maxSpeed)
         {
             rigidBody2D.velocity = rigidBody2D.velocity.normalized * maxSpeed;
+        }
+        if(leCharge == true)
+        {
+            chargePower++;
         }
     }
 
@@ -55,6 +63,68 @@ public abstract class Ship : MonoBehaviour
         fireProjectileSound.Play();
         Destroy(projectile, 4);
         StartCoroutine(FireRateBuffer());
+    }
+    public void ChargedShot()
+    {
+
+
+        
+        // 0 frames normal shot
+        if (Input.GetMouseButtonUp(0) && chargePower < 20)
+        {
+            Projectile projectile1 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile1.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile1.Init(this.gameObject);
+            fireProjectileSound.Play();
+            Destroy(projectile1, 4);
+            StartCoroutine(FireRateBuffer());
+            chargePower = 0;
+            leCharge = false;
+        }
+        // 20 frames Quick shot
+        if (Input.GetMouseButtonUp(0) && chargePower >= 20)
+        {
+            Projectile projectile2 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile2.rigidBody2D.AddForce(transform.up * projectileSpeed * 2); //doubled
+            projectile2.Init(this.gameObject);
+            fireProjectileSound.Play();                                       //sound
+            Destroy(projectile2, 4);
+            StartCoroutine(FireRateBuffer());
+            chargePower = 0;
+            leCharge = false;
+        }
+        //// 40 frames snipe shot
+
+        if (Input.GetMouseButtonUp(0) && chargePower >= 20)
+        {
+            Projectile projectile3 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile3.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile3.Init(this.gameObject);
+            fireProjectileSound.Play();                                        //sound
+            Destroy(projectile3, 4); //lasts longer
+            StartCoroutine(FireRateBuffer());
+            chargePower = 0;
+            leCharge = false;
+        }
+        //// 60 frames Power shot
+        //Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
+        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        //projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        //projectile.Init(this.gameObject);
+        //fireProjectileSound.Play();                                         //sound
+        //Destroy(projectile, 1);
+        //StartCoroutine(FireRateBuffer());
+        //// 120 frames Ultra shot
+        //Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
+        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation); 
+        //projectile.rigidBody2D.AddForce(transform.up * projectileSpeed * 2); //doubled
+        //projectile.Init(this.gameObject);
+        //fireProjectileSound.Play();                                         //sound
+        //Destroy(projectile, 4); //lasts longer
+        //StartCoroutine(FireRateBuffer());
     }
 
     private IEnumerator FireRateBuffer()
@@ -93,4 +163,11 @@ public abstract class Ship : MonoBehaviour
 
         Destroy(gameObject);
     }
+    //public void Regen()
+    //{
+    //    if(currentArmor < maxArmor)
+    //    {
+    //        currentArmor = currentArmor + 1;
+    //    }
+    //}
 }

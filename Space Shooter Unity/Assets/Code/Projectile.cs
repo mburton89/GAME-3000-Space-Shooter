@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
         if (collision.GetComponent<Ship>() && collision.gameObject != firingShip)
         {
             collision.GetComponent<Ship>().TakeDamage(damageToGive);
+            //firingShip.GetComponent<Ship>().Regen();
             Destroy(gameObject);
         }
     }

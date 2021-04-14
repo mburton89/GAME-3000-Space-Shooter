@@ -8,18 +8,21 @@ public class PlayerShip : Ship
     {
         FollowMouse();
         HandleUserInput();
+        ChargedShot();
     }
 
     void HandleUserInput()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && canMove)
         {
             Thrust();
         }
 
-        if (Input.GetMouseButtonDown(0) && canShoot)
+
+
+        if (Input.GetMouseButton(0) && canShoot)
         {
-            FireProjectile();
+            leCharge = true;
         }
     }
 
