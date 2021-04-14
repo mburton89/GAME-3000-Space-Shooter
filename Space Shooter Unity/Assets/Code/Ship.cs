@@ -73,11 +73,11 @@ public abstract class Ship : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && chargePower < 20)
         {
             Projectile projectile1 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
             projectile1.rigidBody2D.AddForce(transform.up * projectileSpeed);
             projectile1.Init(this.gameObject);
             fireProjectileSound.Play();
-            Destroy(projectile1, 4);
+            Destroy(projectile1.gameObject, 1);
             StartCoroutine(FireRateBuffer());
             chargePower = 0;
             leCharge = false;
@@ -86,29 +86,29 @@ public abstract class Ship : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && chargePower >= 20)
         {
             Projectile projectile2 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
             projectile2.rigidBody2D.AddForce(transform.up * projectileSpeed * 2); //doubled
             projectile2.Init(this.gameObject);
             fireProjectileSound.Play();                                       //sound
-            Destroy(projectile2, 4);
+            Destroy(projectile2.gameObject, 4);
             StartCoroutine(FireRateBuffer());
             chargePower = 0;
             leCharge = false;
         }
-        //// 40 frames snipe shot
+        // 40 frames snipe shot
 
-        if (Input.GetMouseButtonUp(0) && chargePower >= 20)
-        {
-            Projectile projectile3 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
-            projectile3.rigidBody2D.AddForce(transform.up * projectileSpeed);
-            projectile3.Init(this.gameObject);
-            fireProjectileSound.Play();                                        //sound
-            Destroy(projectile3, 4); //lasts longer
-            StartCoroutine(FireRateBuffer());
-            chargePower = 0;
-            leCharge = false;
-        }
+        //if (Input.GetMouseButtonUp(0) && chargePower >= 20)
+        //{
+        //    Projectile projectile3 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        //    Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        //    projectile3.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        //    projectile3.Init(this.gameObject);
+        //    fireProjectileSound.Play();                                        //sound
+        //    Destroy(projectile3, 4); //lasts longer
+        //    StartCoroutine(FireRateBuffer());
+        //    chargePower = 0;
+        //    leCharge = false;
+        //}
         //// 60 frames Power shot
         //Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
         //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
