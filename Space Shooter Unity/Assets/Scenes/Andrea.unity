@@ -1987,6 +1987,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4080232680355993967, guid: 7fba68f6419fe4daf841c210a5b49c26, type: 3}
+      propertyPath: maxArmor
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5625106571259127021, guid: 7fba68f6419fe4daf841c210a5b49c26, type: 3}
       propertyPath: m_Name
       value: EnemyShip - Shooter
