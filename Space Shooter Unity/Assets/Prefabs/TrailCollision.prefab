@@ -115,13 +115,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 3
 --- !u!114 &1111301393955562751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,5 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 1953311800686717413}
+  trailModifier: {fileID: 0}
   initializationTime: 0
-  position: {x: 0, y: 0, z: 0}
+  timeSinceInitialization: 0
+  halfTimeSinceInitialization: 0

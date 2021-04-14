@@ -1629,13 +1629,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d0d97385d37eb43a522fda85cd88be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailAttackPrefab: {fileID: -7774005647524099861, guid: 3c2156026de4c594dbbe81ab19734740, type: 3}
   trailCollisionSpawnPoint: {fileID: 1402097679}
   trailCollisionPrefab: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-  pointB: {x: 0, y: 0, z: 0}
-  pointC: {x: 0, y: 0, z: 0}
-  pointD: {x: 0, y: 0, z: 0}
-  attackSpawn: {x: 0, y: 0, z: 0}
 --- !u!1 &1473914458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2036,22 +2031,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1953311800686717413, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953311800686717413, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953311800686717413, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953311800686717413, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-      propertyPath: m_Constraints
-      value: 3
-      objectReference: {fileID: 0}
+    - target: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+      propertyPath: trailModifier
+      value: 
+      objectReference: {fileID: 1426788169}
+    - target: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+      propertyPath: trailCollisionPrefab
+      value: 
+      objectReference: {fileID: 1953311800686717412}
+    - target: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+      propertyPath: trailAttackPrefab
+      value: 
+      objectReference: {fileID: -7774005647524099861, guid: 3c2156026de4c594dbbe81ab19734740, type: 3}
     - target: {fileID: 2625323574387582132, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
       propertyPath: m_Name
       value: TrailCollision
@@ -2100,12 +2091,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8091168040948575081, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+--- !u!114 &1953311800686717412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+  m_PrefabInstance: {fileID: 1953311800686717411}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf350f559f6c5014d8f6d0c14a44805f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6227067149749431252
 PrefabInstance:
   m_ObjectHideFlags: 0

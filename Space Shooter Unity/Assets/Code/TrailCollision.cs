@@ -5,10 +5,13 @@ using UnityEngine;
 public class TrailCollision : MonoBehaviour
 {
     public Rigidbody2D rigidBody2D;
+    public TrailCollision trailCollisionPrefab;
+    [HideInInspector] public Vector3 attackSpawn;
+    public TrailAttack trailAttackPrefab;
     [HideInInspector] public double initializationTime;
     [HideInInspector] public double timeSinceInitialization;
     [HideInInspector] public double halfTimeSinceInitialization;
-
+    
     private void Start()
     {
         initializationTime = Time.timeSinceLevelLoad;
@@ -21,27 +24,34 @@ public class TrailCollision : MonoBehaviour
         halfTimeSinceInitialization = timeSinceInitialization / 2;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+
         if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5))
         {
             Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
-
-
-            GetComponent<TrailModifier>().sendBackParameter(gameObject, timeSinceInitialization, halfTimeSinceInitialization, position);
+            GameObject ColliderA = this.gameObject;
+            print(ColliderA);
+            collision.GetComponent<TrailCollision>().findPointB(ColliderA, timeSinceInitialization, halfTimeSinceInitialization, position);
         }
     }
 
-    public void returnSelf(GameObject ColliderA, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA)
+    public void findPointB(GameObject ColliderA, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA)
     {
         if ((timeSinceInitialization - halfTimeSinceInitialization) <= 0.00001)
         {
             Vector3 position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y);
+            GameObject ColliderB = this.gameObject;
 
-            GetComponent<TrailModifier>().createTrailAttack(ColliderA, gameObject, timeSinceInit, timeSinceInitHalf, pointA, position);
+            GetComponent<TrailCollision>().createTrailAttack(ColliderA, ColliderB, timeSinceInit, timeSinceInitHalf, pointA, position);
         }
     }
 
+    public void createTrailAttack(GameObject ColliderA, GameObject ColliderB, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA, Vector3 pointB)
+    {
+        attackSpawn = new Vector3(pointA.x - pointB.x, pointA.y - pointB.y);
 
+        TrailAttack attack = Instantiate(trailAttackPrefab, attackSpawn, transform.rotation) as TrailAttack;
+        Instantiate(trailAttackPrefab, attackSpawn, transform.rotation);
+    }
 }
