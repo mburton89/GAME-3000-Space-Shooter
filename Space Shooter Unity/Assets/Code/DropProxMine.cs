@@ -6,58 +6,47 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 
-public class DropProxMine : MonoBehaviour
+public class DropProxMine : Ship
 {
-    public GameObject proxMinePrefab;
-    public float mineTriggerDistance;
+    public Projectile proxMinePrefab;
     public int minesLeftCounter;
     public Transform mineSpawnPoint;
+    public AudioSource explodeSound;
+    public Animation explodeAnimation;
 
     public TextMeshProUGUI mineWarningText;
 
 
-    public void DropMine()
+    public void Update()
     {
-        if (Input.GetButtonDown("space"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject proxMine = Instantiate(proxMinePrefab, mineSpawnPoint.position, transform.rotation)as GameObject;
+            Projectile proxMine = Instantiate(proxMinePrefab, mineSpawnPoint.position, transform.rotation)as Projectile;
+            proxMine.Init(GetComponent<PlayerShip>().gameObject);
         }
 
-        if(minesLeftCounter == 0)
+        if (minesLeftCounter == 0)
         {
             mineWarningText.SetText("OUT OF MINES! RESTOCK!");
         }
         else
+        {
             minesLeftCounter--;
+            mineWarningText.SetText("Mines left: " + minesLeftCounter);
+        }
+
     }
 
 
-    public void MineTrigger()
+    public void MineTrigger(Collision2D collision)
     {
-        if()//if player ship distnace is within mineTriggerDistance, then detonate mine
+        if (collision.gameObject.GetComponent<EnemyShip>())
         {
-
+            explodeSound.Play();
+            explodeAnimation.Play();
+            Explode();
+            collision.gameObject.GetComponent<EnemyShip>().TakeDamage(1);
         }
-
-        Explode();
-    }
-    
-
-
-
-    public void Explode()
-    {
-        Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
-        //ScreenShaker.Instance.ShakeScreen();
-        ScreenShakeManager.Instance.ShakeScreen();
-        EnemyShipSpawner.Instance.CountEnemyShips();
-
-        if (GetComponent<PlayerShip>())
-        {
-            GameManager.Instance.HandlePlayerDestroyed();
-        }
-
-        Destroy(gameObject);
     }
 
 }
