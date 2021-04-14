@@ -34,7 +34,7 @@ public class EnemyShip : Ship
         {
             FlyTowardsPlayer();
         }
-        if (canShootFlames)
+        if (canShootFlames && canShoot)
         {
             FireFlames();
         }

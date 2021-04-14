@@ -40,7 +40,10 @@ public abstract class Ship : MonoBehaviour
 
     public void Thrust()
     {
+        if (GetComponent<EnemyShip>())
+        {
         rigidBody2D.AddForce(transform.up * acceleration); //Add force in the direction we're facing
+        }
         currentSpeed = maxSpeed; //Set our speed to our max speed
         float randomX = Random.Range(-0.1f, 0.1f);
         float randomY = Random.Range(-0.1f, 0.1f);
@@ -61,11 +64,11 @@ public abstract class Ship : MonoBehaviour
     public void FireFlames()
     {
         Projectile projectile = Instantiate(FlamesPrefab, projectileSpawnPoint.position, transform.rotation);
-        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        //Instantiate(FlamesPrefab, projectileSpawnPoint.position, transform.rotation);
         projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
         projectile.Init(this.gameObject);
         fireProjectileSound.Play();
-        Destroy(projectile, 4);
+        Destroy(projectile.gameObject, .3f);
         StartCoroutine(FireRateBuffer());
     }
 
