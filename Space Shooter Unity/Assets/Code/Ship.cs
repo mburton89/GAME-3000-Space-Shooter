@@ -11,7 +11,7 @@ public abstract class Ship : MonoBehaviour
     public AudioSource fireProjectileSound;
     public GameObject thrustParticlePrefab;
     public Transform particleSpawnPoint;
-    public GameObject dust;
+  
     public float acceleration;
     public float maxSpeed;
     public int maxArmor;
@@ -21,7 +21,10 @@ public abstract class Ship : MonoBehaviour
     public float dashtime;
     public float startDashTime;
     public int direction;
-
+    public Transform DashSpawn;
+    public GameObject dashEffect;
+    public float cooldowntime = 5;
+    public float nextDashTime = 0;
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
