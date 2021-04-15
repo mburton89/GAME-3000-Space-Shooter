@@ -18,6 +18,8 @@ public abstract class Ship : MonoBehaviour
     public float fireRate;
     public float projectileSpeed;
     public float chargePower;
+    public int lgBullet = 8;
+    public int smBullet = 4;
 
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
@@ -39,7 +41,7 @@ public abstract class Ship : MonoBehaviour
             rigidBody2D.velocity = rigidBody2D.velocity.normalized * maxSpeed;
         }
         if(leCharge == true)
-        {
+        {   
             chargePower++;
         }
     }
@@ -67,7 +69,7 @@ public abstract class Ship : MonoBehaviour
     public void ChargedShot()
     {
 
-
+        
         
         // 0 frames normal shot
         if (Input.GetMouseButtonUp(0) && chargePower < 20)
@@ -77,54 +79,78 @@ public abstract class Ship : MonoBehaviour
             projectile1.rigidBody2D.AddForce(transform.up * projectileSpeed);
             projectile1.Init(this.gameObject);
             fireProjectileSound.Play();
-            Destroy(projectile1.gameObject, 1);
+            Destroy(projectile1.gameObject, (float) 0.5);
             StartCoroutine(FireRateBuffer());
             chargePower = 0;
             leCharge = false;
         }
         // 20 frames Quick shot
-        if (Input.GetMouseButtonUp(0) && chargePower >= 20)
+        if (Input.GetMouseButtonUp(0) && chargePower >= 20 && chargePower < 40)
         {
             Projectile projectile2 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
             //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile2.GetComponent<Renderer>().material.color= new Color(1,1,0);
+            projectile2.transform.localScale = new Vector3(0.02f,.2f,3);
             projectile2.rigidBody2D.AddForce(transform.up * projectileSpeed * 2); //doubled
             projectile2.Init(this.gameObject);
             fireProjectileSound.Play();                                       //sound
-            Destroy(projectile2.gameObject, 4);
+            Destroy(projectile2.gameObject, (float) 0.25);
             StartCoroutine(FireRateBuffer());
             chargePower = 0;
             leCharge = false;
         }
         // 40 frames snipe shot
 
-        //if (Input.GetMouseButtonUp(0) && chargePower >= 20)
-        //{
-        //    Projectile projectile3 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-        //    Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
-        //    projectile3.rigidBody2D.AddForce(transform.up * projectileSpeed);
-        //    projectile3.Init(this.gameObject);
-        //    fireProjectileSound.Play();                                        //sound
-        //    Destroy(projectile3, 4); //lasts longer
-        //    StartCoroutine(FireRateBuffer());
-        //    chargePower = 0;
-        //    leCharge = false;
-        //}
-        //// 60 frames Power shot
-        //Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
-        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
-        //projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
-        //projectile.Init(this.gameObject);
-        //fireProjectileSound.Play();                                         //sound
-        //Destroy(projectile, 1);
-        //StartCoroutine(FireRateBuffer());
-        //// 120 frames Ultra shot
-        //Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
-        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation); 
-        //projectile.rigidBody2D.AddForce(transform.up * projectileSpeed * 2); //doubled
-        //projectile.Init(this.gameObject);
-        //fireProjectileSound.Play();                                         //sound
-        //Destroy(projectile, 4); //lasts longer
-        //StartCoroutine(FireRateBuffer());
+        if (Input.GetMouseButtonUp(0) && chargePower >= 40 && chargePower < 60)
+        {
+           Projectile projectile3 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+           //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+           projectile3.GetComponent<Renderer>().material.color= new Color(1,0,1);
+            projectile3.transform.localScale = new Vector3(0.05f,.4f,3);
+           projectile3.rigidBody2D.AddForce(transform.up * projectileSpeed);
+           projectile3.Init(this.gameObject);
+           fireProjectileSound.Play();                                        //sound
+           Destroy(projectile3, 3); //lasts longer
+           StartCoroutine(FireRateBuffer());
+           chargePower = 0;
+           leCharge = false;
+        }
+        // 60 frames Power shot
+        if (Input.GetMouseButtonUp(0) && chargePower >= 60 && chargePower < 120)
+        {
+            for ( int i = 0; i <= smBullet; i++)
+            {
+            Projectile projectile4 = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
+            //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile4.GetComponent<Renderer>().material.color= new Color(0.75f,0,0);
+            projectile4.transform.localScale = new Vector3(0.75f,1.5f,3);
+            projectile4.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile4.Init(this.gameObject);
+            Destroy(projectile4.gameObject, (float)0.5);
+            }
+            fireProjectileSound.Play();                                         //sound
+            StartCoroutine(FireRateBuffer());
+            chargePower = 0;
+            leCharge = false;
+        }
+        // 120 frames Ultra shot
+        if (Input.GetMouseButtonUp(0) && chargePower >= 120)
+        {
+            for(int i=0; i <= lgBullet; i++)
+            {
+            Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile; //create multiple projectiles on each other
+            //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation); 
+            projectile.GetComponent<Renderer>().material.color= new Color(1,0,0); //red
+            projectile.transform.localScale = new Vector3(1.5f,3,3);
+            projectile.rigidBody2D.AddForce(transform.up * projectileSpeed * 2.5f); //doubled
+            projectile.Init(this.gameObject);
+            Destroy(projectile.gameObject, 4); //lasts longer
+            }
+            fireProjectileSound.Play();                                         //sound
+            StartCoroutine(FireRateBuffer());
+            chargePower = 0;
+            leCharge = false;
+        }
     }
 
     private IEnumerator FireRateBuffer()
