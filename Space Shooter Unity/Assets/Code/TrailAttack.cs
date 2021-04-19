@@ -5,15 +5,17 @@ using UnityEngine;
 public class TrailAttack : MonoBehaviour
 {
 
+    [HideInInspector] public float scaleX;
+    [HideInInspector] public float scaleY;
+
     private void Start()
     {
         Destroy(gameObject, 1);    
     }
 
-    public void changeScale(Vector3 pointA, Vector3 pointB)
+    public void changeScale(double timeSinceInitHalf)
     {
-        Vector3 size = (pointA - pointB);
-        gameObject.transform.localScale = size;
+        gameObject.transform.localScale = new Vector3((float)(timeSinceInitHalf * 3.5), (float)(timeSinceInitHalf * 3.5), 1);
     }
 
 }

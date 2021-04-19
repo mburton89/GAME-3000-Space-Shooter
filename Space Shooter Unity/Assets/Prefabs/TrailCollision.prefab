@@ -141,4 +141,4 @@ MonoBehaviour:
   initializationTime: 0
   timeSinceInitialization: 0
   halfTimeSinceInitialization: 0
-  stopChecking: 0
+  playerShip: {fileID: 3243360392424992549, guid: f60111718766c2742913963d362d6b14, type: 3}
