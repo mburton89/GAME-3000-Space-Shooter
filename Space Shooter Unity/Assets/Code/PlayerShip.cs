@@ -6,10 +6,12 @@ public class PlayerShip : Ship
 
 {
     [HideInInspector] public bool canCollideWithTrail;
+    [HideInInspector] public bool canTrailAttack;
 
     private void Awake()
     {
         canCollideWithTrail = true;
+        canTrailAttack = true;
     }
     void Update()
     {
@@ -35,5 +37,12 @@ public class PlayerShip : Ship
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10)); //Finds Mouse Position on Screen
         Vector2 directionToFace = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); //creates direction based on positon of ship and mouse cursor 
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
+    }
+
+    public IEnumerator TrailAttackBuffer()
+    {
+        canTrailAttack = false;
+        yield return new WaitForSeconds(2);
+        canTrailAttack = true;
     }
 }
