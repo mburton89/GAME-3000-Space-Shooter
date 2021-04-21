@@ -1517,10 +1517,13 @@ MonoBehaviour:
   maxSpeed: 6
   maxArmor: 3
   fireRate: 0
-  projectileSpeed: 100
+  projectileSpeed: 50
+  chargePower: 0
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
+  canMove: 0
+  leCharge: 0
 --- !u!114 &1426788168
 MonoBehaviour:
   m_ObjectHideFlags: 0
