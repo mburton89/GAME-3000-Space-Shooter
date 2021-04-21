@@ -6,12 +6,14 @@ public class EnemyShip : Ship
 {
     public bool canShootPlayer;
     public bool canFlyTowardsPlayer;
+    public float fedUp;
     Transform target;
 
     void Awake()
     {
         base.Awake();
         target = FindObjectOfType<PlayerShip>().transform;
+        fedUp = 0;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,6 +41,21 @@ public class EnemyShip : Ship
     void FlyTowardsPlayer()
     {
         Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
+
+        float distancex = Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x);
+        float distancey = Mathf.Abs(target.transform.position.y) - Mathf.Abs(transform.position.y);
+        if (distancex >= 15 || distancex <= -15 || distancey >= 15 || distancey <= -15)
+        {
+            acceleration = 10;
+            maxSpeed = 40;
+            fedUp++;
+
+        }
+        if (distancex <= 2 && distancex >= -2 && fedUp <=60    || distancey <= 2 && distancey >= -2 && fedUp <=60)
+        {
+            acceleration = 1;
+            maxSpeed = 4;
+        }
         transform.up = directionToFace;
         Thrust();
     }

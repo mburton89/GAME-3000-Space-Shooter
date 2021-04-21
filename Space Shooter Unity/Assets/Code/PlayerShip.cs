@@ -11,7 +11,7 @@ public class PlayerShip : Ship
         ChargedShot();
         float x;
         x = chargePower/120;
-        this.GetComponent<Renderer>().material.color = new Color(x,1,1);
+        this.GetComponent<SpriteRenderer>().color = new Color(x,1,1);
     }
 
     void HandleUserInput()

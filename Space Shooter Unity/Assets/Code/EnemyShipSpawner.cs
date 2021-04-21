@@ -50,4 +50,5 @@ public class EnemyShipSpawner : MonoBehaviour
             Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
         }
     }
+
 }
