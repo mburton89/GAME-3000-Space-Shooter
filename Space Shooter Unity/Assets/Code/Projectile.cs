@@ -8,11 +8,18 @@ public class Projectile : MonoBehaviour
     public int damageToGive;
     GameObject firingShip;
 
+    public bool isMine;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<Ship>() && collision.gameObject != firingShip)
         {
             collision.GetComponent<Ship>().TakeDamage(damageToGive);
+
+            if (isMine)
+            {
+                Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
+            }
+
             Destroy(gameObject);
         }
     }
