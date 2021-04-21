@@ -8,6 +8,9 @@ public class EnemyShip : Ship
     public bool canShootFlames;
     public bool canFlyTowardsPlayer;
     Transform target;
+    public bool CanExplode;
+    [HideInInspector] public float distanceFromPlayer;
+    public float minDistanceFromPlayer;
 
     void Awake()
     {
@@ -26,13 +29,20 @@ public class EnemyShip : Ship
 
     void Update()
     {
+        distanceFromPlayer = Vector3.Distance(transform.position, target.position);
+        //print("distance from player" + distanceFromPlayer);
+
         if (canShootPlayer && canShoot)
         {
             FireProjectile();
         }
+        if (distanceFromPlayer > minDistanceFromPlayer && target != null)
+        {
+            Thrust();
+        }
         if (canFlyTowardsPlayer && target != null)
         {
-            FlyTowardsPlayer();
+            FacePlayer();
         }
         if (canShootFlames && canShoot)
         {
@@ -40,10 +50,15 @@ public class EnemyShip : Ship
         }
     }
 
-    void FlyTowardsPlayer()
+    void FacePlayer()
     {
         Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
         transform.up = directionToFace;
-        Thrust();
+    }
+
+    void allowableDistance()
+    {
+      
+
     }
 }

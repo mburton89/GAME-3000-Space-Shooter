@@ -445,8 +445,8 @@ MonoBehaviour:
   thrustParticlePrefab: {fileID: 4423072926202384115, guid: d6ca01033c5384f86926e46c7fe2e95b, type: 3}
   particleSpawnPoint: {fileID: 3698616720429673035}
   acceleration: 1
-  maxSpeed: 2
-  maxArmor: 5
+  maxSpeed: 10
+  maxArmor: 100
   fireRate: 0.02
   projectileSpeed: 50
   currentSpeed: 0
@@ -455,6 +455,9 @@ MonoBehaviour:
   canShootPlayer: 0
   canShootFlames: 1
   canFlyTowardsPlayer: 1
+  CanExplode: 0
+  distanceFromPlayer: 0
+  minDistanceFromPlayer: 1
 --- !u!60 &9002361544402953768
 PolygonCollider2D:
   m_ObjectHideFlags: 0

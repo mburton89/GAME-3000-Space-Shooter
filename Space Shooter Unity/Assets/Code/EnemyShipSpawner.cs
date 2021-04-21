@@ -25,7 +25,7 @@ public class EnemyShipSpawner : MonoBehaviour
     {
         int currentShips = FindObjectsOfType<EnemyShip>().Length;
 
-        print(currentShips);
+        //print(currentShips);
 
         if (currentShips == 1)
         {

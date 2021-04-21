@@ -7,6 +7,10 @@ public class PlayerShip : Ship
 
     public Transform tankTopPivot;
 
+    public float xDirectionToFace;
+    public float yDirectionToFace;
+    public Vector3 DirectionToFace;
+
     void Update()
     {
         FollowMouse();
@@ -15,25 +19,52 @@ public class PlayerShip : Ship
         {
             transform.position += Vector3.left * maxSpeed * Time.deltaTime;
             transform.up = Vector3.left; //Faces Mouse. Assigns transform.up the Direction to Face
-            Thrust();
+            //Thrust();
+            xDirectionToFace = -1;
         }
         if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * maxSpeed * Time.deltaTime;
             transform.up = Vector3.right;
-            Thrust();
+            //Thrust();
+            xDirectionToFace = 1;
         }
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += Vector3.up * maxSpeed * Time.deltaTime;
             transform.up = Vector3.up;
-            Thrust();
+            //Thrust();
+            yDirectionToFace = 1;
         }
         if (Input.GetKey(KeyCode.S))
         {
             transform.position += Vector3.down * maxSpeed * Time.deltaTime;
             transform.up = Vector3.down;
-            Thrust();
+            //Thrust();
+            yDirectionToFace = -1;
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            xDirectionToFace = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            xDirectionToFace = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+            yDirectionToFace = 0;
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            yDirectionToFace = 0;
+        }
+
+        DirectionToFace = new Vector3(xDirectionToFace, yDirectionToFace, 0);
+        if (DirectionToFace != Vector3.zero)
+        {
+            transform.up = DirectionToFace;
         }
     }
 
@@ -43,7 +74,7 @@ public class PlayerShip : Ship
 
         if (Input.GetMouseButtonDown(0) && canShoot)
         {
-            FireProjectile(tankTopPivot.up);
+            FireProjectile(tankTopPivot);
         }
     }
 

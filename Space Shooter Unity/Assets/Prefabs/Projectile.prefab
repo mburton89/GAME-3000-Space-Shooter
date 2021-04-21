@@ -145,4 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 7208791232241608934}
-  damageToGive: 1
+  damageToGive: 25
+  isFlame: 0

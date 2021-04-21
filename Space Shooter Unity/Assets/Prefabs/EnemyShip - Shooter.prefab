@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidBody2D: {fileID: 5625106571259127026}
+  FlamesPrefab: {fileID: 0}
   projectilePrefab: {fileID: 6763768399812547540, guid: 07350bffb0f5baa4a89c0d382804e218, type: 3}
   projectileSpawnPoint: {fileID: 5625106571474510894}
   hitSound: {fileID: 6024113914293028724}
@@ -288,14 +289,18 @@ MonoBehaviour:
   particleSpawnPoint: {fileID: 1763889378414030987}
   acceleration: 1
   maxSpeed: 2
-  maxArmor: 5
+  maxArmor: 75
   fireRate: 2
   projectileSpeed: 50
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
   canShootPlayer: 1
+  canShootFlames: 0
   canFlyTowardsPlayer: 1
+  CanExplode: 0
+  distanceFromPlayer: 0
+  minDistanceFromPlayer: 3
 --- !u!60 &6323168656124706024
 PolygonCollider2D:
   m_ObjectHideFlags: 0
