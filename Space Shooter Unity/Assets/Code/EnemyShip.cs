@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyShip : Ship
 {
-    public bool canShootPlayer;
-    public bool canFlyTowardsPlayer;
+ 
+    
     Transform target;
 
     void Awake()
@@ -41,4 +41,13 @@ public class EnemyShip : Ship
         transform.up = directionToFace;
         Thrust();
     }
+
+ 
+
+      
+
 }
+
+
+
+

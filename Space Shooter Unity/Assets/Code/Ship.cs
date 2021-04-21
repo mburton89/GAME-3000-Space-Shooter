@@ -11,7 +11,11 @@ public abstract class Ship : MonoBehaviour
     public AudioSource fireProjectileSound;
     public GameObject thrustParticlePrefab;
     public Transform particleSpawnPoint;
-  
+    public float hittimer;
+    public bool canShootPlayer;
+    public bool canFlyTowardsPlayer;
+    public bool IsHit;
+    public float Hitdown = (0.2f);
     public float acceleration;
     public float maxSpeed;
     public int maxArmor;
@@ -35,6 +39,7 @@ public abstract class Ship : MonoBehaviour
     {
         currentArmor = maxArmor;
         canShoot = true;
+        canTakeDamage = true; 
     }
    
     void FixedUpdate()
@@ -75,11 +80,14 @@ public abstract class Ship : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-
-
         if (canTakeDamage == true)
-        { currentArmor -= damageToTake;
+        {
+            currentArmor -= damageToTake;
             hitSound.Play();
+            if (GetComponent<EnemyShip>())
+            {
+                StartCoroutine(StunCo());
+            }
             if (currentArmor <= 0)
             {
                 Explode();
@@ -90,8 +98,16 @@ public abstract class Ship : MonoBehaviour
                 HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
             }
         }
-}
+    }
 
+    private IEnumerator StunCo()
+    {
+        canShootPlayer = false;
+        canFlyTowardsPlayer = false;
+        yield return new WaitForSeconds(5);
+        canShootPlayer = true;
+        canFlyTowardsPlayer = true;
+    }
     public void Explode()
     {
         Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
