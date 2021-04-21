@@ -25,6 +25,7 @@ public class EnemyShip : Ship
 
     void Update()
     {
+        base.Update();
         if (canShootPlayer && canShoot)
         {
             FireProjectile();
