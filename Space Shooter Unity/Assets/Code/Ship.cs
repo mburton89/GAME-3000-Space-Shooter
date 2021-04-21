@@ -7,6 +7,8 @@ public abstract class Ship : MonoBehaviour
     public Rigidbody2D rigidBody2D;
     public Projectile projectilePrefab;
     public Transform projectileSpawnPoint;
+    public Transform projectileSpawnPointLeft;
+    public Transform projectileSpawnPointRight;
     public AudioSource hitSound;
     public AudioSource fireProjectileSound;
     public GameObject thrustParticlePrefab;
@@ -21,6 +23,8 @@ public abstract class Ship : MonoBehaviour
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+
+    public bool fireDouble;
 
     public void Awake()
     {
@@ -48,12 +52,29 @@ public abstract class Ship : MonoBehaviour
 
     public void FireProjectile()
     {
-        Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
-        projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
-        projectile.Init(this.gameObject);
+        if (fireDouble)
+        {
+            Projectile projectile1 = Instantiate(projectilePrefab, projectileSpawnPointLeft.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPointLeft.position, transform.rotation);
+            projectile1.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile1.Init(this.gameObject);
+            Destroy(projectile1.gameObject, 4);
+
+            Projectile projectile2 = Instantiate(projectilePrefab, projectileSpawnPointRight.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPointRight.position, transform.rotation);
+            projectile2.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile2.Init(this.gameObject);
+            Destroy(projectile2.gameObject, 4);
+        }
+        else
+        {
+            Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+            Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+            projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+            projectile.Init(this.gameObject);
+            Destroy(projectile.gameObject, 4);
+        }
         fireProjectileSound.Play();
-        Destroy(projectile, 4);
         StartCoroutine(FireRateBuffer());
     }
 

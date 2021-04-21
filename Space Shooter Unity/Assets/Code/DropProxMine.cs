@@ -34,10 +34,6 @@ public class DropProxMine : MonoBehaviour
 
     public void MineTrigger()
     {
-        if()//if player ship distnace is within mineTriggerDistance, then detonate mine
-        {
-
-        }
 
         Explode();
     }
