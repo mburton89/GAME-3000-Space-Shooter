@@ -899,6 +899,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2370439361266131128, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
+      propertyPath: IsHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2370439361266131128, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
+      propertyPath: maxArmor
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6227067149992434976, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.961046
@@ -1314,7 +1322,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c4ab53f3da1eb454d90f0bca1d52ffca, type: 3}
   m_Color: {r: 0.92592144, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -1611,6 +1619,11 @@ MonoBehaviour:
   fireProjectileSound: {fileID: 1282558413}
   thrustParticlePrefab: {fileID: 4423072926202384115, guid: d6ca01033c5384f86926e46c7fe2e95b, type: 3}
   particleSpawnPoint: {fileID: 916006302}
+  hittimer: 0
+  canShootPlayer: 0
+  canFlyTowardsPlayer: 0
+  IsHit: 0
+  Hitdown: 0.2
   acceleration: 4
   maxSpeed: 6
   maxArmor: 20
@@ -6797,6 +6810,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4080232680355993967, guid: 7fba68f6419fe4daf841c210a5b49c26, type: 3}
+      propertyPath: canFlyTowardsPlayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4080232680355993967, guid: 7fba68f6419fe4daf841c210a5b49c26, type: 3}
+      propertyPath: IsHit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5625106571259127021, guid: 7fba68f6419fe4daf841c210a5b49c26, type: 3}
       propertyPath: m_Name
       value: EnemyShip - Shooter
@@ -6882,6 +6903,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2370439361266131128, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
+      propertyPath: IsHit
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6227067149992434976, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.62

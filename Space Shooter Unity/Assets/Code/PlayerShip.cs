@@ -51,7 +51,10 @@ public class PlayerShip : Ship
         {
             FireProjectile();
         }
-
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            FireProjectilestun();
+        }
     }
     void Dash()
     {

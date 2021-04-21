@@ -71,6 +71,17 @@ public abstract class Ship : MonoBehaviour
         StartCoroutine(FireRateBuffer());
     }
 
+    public void FireProjectilestun()
+    {
+        Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        projectile.Init(this.gameObject);
+        fireProjectileSound.Play();
+        Destroy(projectile, 4);
+        StartCoroutine(FireRateBuffer());
+    }
+
     private IEnumerator FireRateBuffer()
     {
         canShoot = false;
