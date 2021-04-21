@@ -42,6 +42,7 @@ public class PlayerShip : Ship
                 FireProjectile();
             }
         }
+
     }
 
     void FollowMouse()
