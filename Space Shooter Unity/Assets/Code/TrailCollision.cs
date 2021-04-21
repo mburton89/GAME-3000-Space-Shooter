@@ -17,6 +17,7 @@ public class TrailCollision : MonoBehaviour
     {
         initializationTime = Time.timeSinceLevelLoad;
         Destroy(gameObject, 2);
+
     }
 
     private void Update()
@@ -27,7 +28,8 @@ public class TrailCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail)
+        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail
+            && FindObjectOfType<PlayerShip>().canTrailAttack)
         {
             collision.GetComponent<PlayerShip>().canCollideWithTrail = false;
             TrailCollision[] allTrailCollisions = FindObjectsOfType<TrailCollision>();
@@ -35,7 +37,6 @@ public class TrailCollision : MonoBehaviour
             {
                 trailCollision.findPointB(this.gameObject, timeSinceInitialization, halfTimeSinceInitialization, gameObject.transform.position);
             }
-            collision.GetComponent<PlayerShip>().startBuffer();
         }
         
     }
@@ -50,7 +51,7 @@ public class TrailCollision : MonoBehaviour
 
     public void findPointB(GameObject ColliderA, double timeSinceInit, double timeSinceInitHalf, Vector3 pointA)
     {
-        if ((timeSinceInitialization - timeSinceInitHalf) <= 0.001 && (timeSinceInitialization - timeSinceInitHalf) >= 0)
+        if ((timeSinceInitialization - timeSinceInitHalf) <= 0.005 && (timeSinceInitialization - timeSinceInitHalf) >= 0)
         {
             createTrailAttack(ColliderA, this.gameObject, timeSinceInit, timeSinceInitHalf, pointA, gameObject.transform.position);
         }
@@ -66,5 +67,6 @@ public class TrailCollision : MonoBehaviour
         {
             trailAttack.changeScale(timeSinceInitHalf);
         }
+        FindObjectOfType<PlayerShip>().startBuffer();
     }
 }

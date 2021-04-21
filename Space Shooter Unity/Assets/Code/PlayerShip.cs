@@ -8,7 +8,7 @@ public class PlayerShip : Ship
     [HideInInspector] public bool canCollideWithTrail;
     [HideInInspector] public bool canTrailAttack;
 
-    private void Start()
+    private void Awake()
     {
         canCollideWithTrail = true;
         canTrailAttack = true;
@@ -44,12 +44,11 @@ public class PlayerShip : Ship
         StartCoroutine(TrailAttackBuffer());
     }
 
-    public IEnumerator TrailAttackBuffer()
+    private IEnumerator TrailAttackBuffer()
     {
         canTrailAttack = false;
         yield return new WaitForSeconds(2);
         canTrailAttack = true;
-        print("Buffer used");
     }
 }
  

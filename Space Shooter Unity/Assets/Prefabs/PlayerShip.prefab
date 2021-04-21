@@ -85,8 +85,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3243360392399384687}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.55, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 3243360392424992551}
   m_RootOrder: 4
@@ -98,7 +98,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3243360392399384687}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -277,11 +277,12 @@ MonoBehaviour:
   acceleration: 4
   maxSpeed: 6
   maxArmor: 1000
-  fireRate: 0
+  fireRate: 0.001
   projectileSpeed: 100
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
+  canShake: 0
   canCollideWithTrail: 0
   canTrailAttack: 0
 --- !u!114 &3243360392424992554
