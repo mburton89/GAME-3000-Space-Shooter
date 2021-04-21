@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3e56de84bff56fe4cbeb0ba3ebbcf391, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08617f89bec2617428f08febcea54d3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -233,7 +233,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1763889378414030988}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.32, z: 0}
+  m_LocalPosition: {x: -0.099, y: -1.246, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5625106571259127031}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 5625106571259127024}
   - component: {fileID: 5625106571259127026}
   - component: {fileID: 4080232680355993967}
-  - component: {fileID: 6323168656124706024}
+  - component: {fileID: 9042039353177308157}
   m_Layer: 0
   m_Name: EnemyShip - Shooter
   m_TagString: Untagged
@@ -373,16 +373,18 @@ MonoBehaviour:
   particleSpawnPoint: {fileID: 1763889378414030987}
   acceleration: 1
   maxSpeed: 2
-  maxArmor: 5
+  maxArmor: 2
   fireRate: 2
   projectileSpeed: 50
+  maxAmmo: 0
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
+  currentAmmo: 0
   fireDouble: 0
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
---- !u!60 &6323168656124706024
+--- !u!60 &9042039353177308157
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -407,22 +409,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.37599277, y: 0.6785716}
-      - {x: 0.39276662, y: 0.67188084}
-      - {x: 0.38962913, y: -0.023857236}
-      - {x: 0.024771124, y: 0.30370605}
-      - {x: -0.32803047, y: 0.056324005}
-      - {x: -0.3998164, y: 0.70533454}
-      - {x: -0.52906203, y: 0.7108308}
-      - {x: -0.6764908, y: -0.24512208}
-      - {x: -0.8754258, y: -0.49768317}
-      - {x: -0.8571429, y: -0.67857146}
-      - {x: 0.8571429, y: -0.67857146}
-      - {x: 0.8789034, y: -0.532655}
-      - {x: 0.6694145, y: -0.339316}
-      - {x: 0.64359856, y: 0.23510826}
-      - {x: 0.56943727, y: 0.32359922}
-      - {x: 0.5358037, y: 0.67857146}
+    - - {x: 0.2793354, y: 0.49996197}
+      - {x: 0.25381985, y: 0.4770435}
+      - {x: -0.24247158, y: 0.46168864}
+      - {x: -0.23762512, y: 0.46681893}
+      - {x: -0.42079496, y: 0.48931432}
+      - {x: -0.4422586, y: 0.47826123}
+      - {x: -0.7334224, y: 0.40427864}
+      - {x: -1.080404, y: 0.17983162}
+      - {x: -1.2042468, y: -0.6147115}
+      - {x: -1.1320405, y: -0.91697294}
+      - {x: -0.76489973, y: -1.2676729}
+      - {x: -0.41537476, y: -1.5611804}
+      - {x: 0.41537547, y: -1.5452902}
+      - {x: 0.40980768, y: -1.5619919}
+      - {x: 0.79618406, y: -1.2192894}
+      - {x: 1.1952252, y: -0.751488}
+      - {x: 1.1701066, y: 0.034213185}
+      - {x: 0.8572657, y: 0.37176442}
+      - {x: 0.41959608, y: 0.4872042}
 --- !u!1 &5625106571474510895
 GameObject:
   m_ObjectHideFlags: 0
