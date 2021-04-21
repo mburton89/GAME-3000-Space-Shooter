@@ -21,7 +21,6 @@ public class HUD : MonoBehaviour
         float healthAmount = (float)currentArmor / (float)maxArmor;
         healthBar.fillAmount = healthAmount;
     }
-
     public void UpdateWaveText(int currentWave)
     {
         waveText.SetText("Wave: " + currentWave.ToString());

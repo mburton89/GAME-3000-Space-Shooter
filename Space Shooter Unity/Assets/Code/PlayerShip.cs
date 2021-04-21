@@ -9,20 +9,26 @@ public class PlayerShip : Ship
         FollowMouse();
         HandleUserInput();
         ChargedShot();
+        float x;
+        x = chargePower/120;
+        this.GetComponent<Renderer>().material.color = new Color(x,1,1);
     }
 
     void HandleUserInput()
     {
-        if (Input.GetMouseButton(1) && canMove)
+        if (Input.GetMouseButton(1) && !leCharge)
         {
             Thrust();
         }
 
 
 
-        if (Input.GetMouseButton(0) && canShoot)
+        if (Input.GetMouseButton(0))
         {
+            if (canShoot)
+            {
             leCharge = true;
+            }
         }
     }
 
@@ -32,4 +38,5 @@ public class PlayerShip : Ship
         Vector2 directionToFace = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); //creates direction based on positon of ship and mouse cursor 
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
     }
+
 }

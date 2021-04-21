@@ -28,6 +28,7 @@ public class EnemyShip : Ship
         if (canShootPlayer && canShoot)
         {
             FireProjectile();
+
         }
         if (canFlyTowardsPlayer && target != null)
         {

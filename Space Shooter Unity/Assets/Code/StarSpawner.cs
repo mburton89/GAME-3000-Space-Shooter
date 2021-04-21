@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StarSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _starPrefab;
+    [SerializeField] private GameObject thingPrefab;
     [SerializeField] private int _numberOfStarsToSpawn;
     [SerializeField] private int _maxX;
     [SerializeField] private int _maxY;
@@ -13,6 +13,22 @@ public class StarSpawner : MonoBehaviour
 
     void Start()
     {
+        for (int i = 0; i < _numberOfStarsToSpawn; i++) //leaves
+        {
+            float randX = Random.Range(-_maxX, _maxX);
+            float randY = Random.Range(-_maxY, _maxY);
+            float randZ = Random.Range(_minZ, _maxZ);
+            Vector3 spawnPosition = new Vector3(randX, randY, randZ);
+            Instantiate(thingPrefab, spawnPosition, transform.rotation, transform);
+        }
+       /* for (int i = 0; i < _numberOfStarsToSpawn; i++)
+        {
+            float randX = Random.Range(-_maxX, _maxX);
+            float randY = Random.Range(-_maxY, _maxY);
+            float randZ = Random.Range(_minZ, _maxZ);
+            Vector3 spawnPosition = new Vector3(randX, randY, randZ);
+            Instantiate(_starPrefab, spawnPosition, transform.rotation, transform);
+        }
         for (int i = 0; i < _numberOfStarsToSpawn; i++)
         {
             float randX = Random.Range(-_maxX, _maxX);
@@ -21,5 +37,13 @@ public class StarSpawner : MonoBehaviour
             Vector3 spawnPosition = new Vector3(randX, randY, randZ);
             Instantiate(_starPrefab, spawnPosition, transform.rotation, transform);
         }
+        for (int i = 0; i < _numberOfStarsToSpawn; i++)
+        {
+            float randX = Random.Range(-_maxX, _maxX);
+            float randY = Random.Range(-_maxY, _maxY);
+            float randZ = Random.Range(_minZ, _maxZ);
+            Vector3 spawnPosition = new Vector3(randX, randY, randZ);
+            Instantiate(_starPrefab, spawnPosition, transform.rotation, transform);
+        }*/
     }
 }
