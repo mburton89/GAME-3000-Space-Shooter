@@ -15,12 +15,15 @@ public class PlayerShip : Ship
     {
         FollowMouse();
         HandleUserInput();
+
+
         if (Input.GetKey(KeyCode.A))
         {
             transform.position += Vector3.left * maxSpeed * Time.deltaTime;
             transform.up = Vector3.left; //Faces Mouse. Assigns transform.up the Direction to Face
             //Thrust();
             xDirectionToFace = -1;
+            rigidBody2D.velocity = Vector2.zero;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -28,6 +31,7 @@ public class PlayerShip : Ship
             transform.up = Vector3.right;
             //Thrust();
             xDirectionToFace = 1;
+            rigidBody2D.velocity = Vector2.zero;
         }
         if (Input.GetKey(KeyCode.W))
         {
@@ -35,6 +39,7 @@ public class PlayerShip : Ship
             transform.up = Vector3.up;
             //Thrust();
             yDirectionToFace = 1;
+            rigidBody2D.velocity = Vector2.zero;
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -42,6 +47,7 @@ public class PlayerShip : Ship
             transform.up = Vector3.down;
             //Thrust();
             yDirectionToFace = -1;
+            rigidBody2D.velocity = Vector2.zero;
         }
 
         if (Input.GetKeyUp(KeyCode.A))

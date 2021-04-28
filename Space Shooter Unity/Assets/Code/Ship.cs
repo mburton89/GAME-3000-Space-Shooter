@@ -10,8 +10,9 @@ public abstract class Ship : MonoBehaviour
     public Transform projectileSpawnPoint;
     public AudioSource hitSound;
     public AudioSource fireProjectileSound;
-    public GameObject thrustParticlePrefab;
-    public Transform particleSpawnPoint;
+    //public AudioSource flameSound;
+    //public GameObject thrustParticlePrefab;
+    //public Transform particleSpawnPoint;
 
     public float acceleration;
     public float maxSpeed;
@@ -47,14 +48,14 @@ public abstract class Ship : MonoBehaviour
         currentSpeed = maxSpeed; //Set our speed to our max speed
         float randomX = Random.Range(-0.1f, 0.1f);
         float randomY = Random.Range(-0.1f, 0.1f);
-        Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
-        Instantiate(thrustParticlePrefab, spawnPosition, transform.rotation);
+        //Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
+        //Instantiate(thrustParticlePrefab, spawnPosition, transform.rotation);
     }
 
     public void FireProjectile()
     {
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
-        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
         projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
         projectile.Init(this.gameObject);
         fireProjectileSound.Play();
@@ -66,7 +67,7 @@ public abstract class Ship : MonoBehaviour
     {
         //TODO pass in Direction
         Projectile projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, newTransform.rotation) as Projectile;
-        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, newTransform.rotation);
+        //Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, newTransform.rotation);
         projectile.rigidBody2D.AddForce(newTransform.up * projectileSpeed);
         projectile.Init(this.gameObject);
         fireProjectileSound.Play();
