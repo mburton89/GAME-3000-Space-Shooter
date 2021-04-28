@@ -19,6 +19,7 @@ public abstract class Ship : MonoBehaviour
     public float acceleration;
     public float maxSpeed;
     public int maxArmor;
+    public bool canBeStunned;
     public float fireRate;
     public float projectileSpeed;
     public float dashspeed;
@@ -39,7 +40,8 @@ public abstract class Ship : MonoBehaviour
     {
         currentArmor = maxArmor;
         canShoot = true;
-        canTakeDamage = true; 
+        canTakeDamage = true;
+        canBeStunned = true;
     }
    
     void FixedUpdate()
@@ -94,10 +96,23 @@ public abstract class Ship : MonoBehaviour
         if (canTakeDamage == true)
         {
             currentArmor -= damageToTake;
+            
             hitSound.Play();
-            if (GetComponent<EnemyShip>())
+            if(GetComponent<ActualCCship>())
+            {
+                if (GetComponent<EnemyShip>() && canBeStunned)
+                {
+                    StartCoroutine(StunCo());
+                    StartCoroutine(StunDuration());
+
+                }
+
+            }
+            if (GetComponent<EnemyShip>() && canBeStunned)
             {
                 StartCoroutine(StunCo());
+                StartCoroutine(StunDuration());
+             
             }
             if (currentArmor <= 0)
             {
@@ -111,13 +126,27 @@ public abstract class Ship : MonoBehaviour
         }
     }
 
+
+    private IEnumerator StunDuration()
+    {
+        print("can't be stunned");
+        canBeStunned = false;
+        yield return new WaitForSeconds(8);
+
+        canBeStunned = true;
+        print("can be stunned");
+
+    }
+
+
     private IEnumerator StunCo()
     {
         canShootPlayer = false;
         canFlyTowardsPlayer = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         canShootPlayer = true;
         canFlyTowardsPlayer = true;
+        
     }
     public void Explode()
     {
