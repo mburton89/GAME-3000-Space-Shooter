@@ -287,7 +287,7 @@ MonoBehaviour:
   thrustParticlePrefab: {fileID: 4423072926202384115, guid: d6ca01033c5384f86926e46c7fe2e95b, type: 3}
   particleSpawnPoint: {fileID: 1327745372}
   acceleration: 1
-  maxSpeed: 0
+  maxSpeed: 10
   maxArmor: 3
   fireRate: 2
   projectileSpeed: 50

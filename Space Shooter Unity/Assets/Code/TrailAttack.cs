@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class TrailAttack : MonoBehaviour
 {
-
     [HideInInspector] public float scaleX;
     [HideInInspector] public float scaleY;
     public Rigidbody2D rigidBody2D;
-
+    public AudioClip explosionSound;
     private void Start()
     {
-        Destroy(gameObject, 1);    
+        AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+
+        Destroy(gameObject, 1);
     }
 
     public void changeScale(double timeSinceInitHalf)

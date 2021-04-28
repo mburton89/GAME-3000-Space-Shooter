@@ -29,7 +29,8 @@ public class TrailCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail
-            && FindObjectOfType<PlayerShip>().canTrailAttack)
+            && FindObjectOfType<PlayerShip>().canTrailAttack && collision.GetComponent<PlayerShip>().currentSpeed >= 
+            collision.GetComponent<PlayerShip>().maxSpeed * (3 / 4))
         {
             collision.GetComponent<PlayerShip>().canCollideWithTrail = false;
             TrailCollision[] allTrailCollisions = FindObjectsOfType<TrailCollision>();

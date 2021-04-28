@@ -276,7 +276,7 @@ MonoBehaviour:
   particleSpawnPoint: {fileID: 3243360391912359420}
   acceleration: 4
   maxSpeed: 6
-  maxArmor: 1000
+  maxArmor: 500
   fireRate: 0.001
   projectileSpeed: 100
   currentSpeed: 0
@@ -285,6 +285,8 @@ MonoBehaviour:
   canShake: 0
   canCollideWithTrail: 0
   canTrailAttack: 0
+  ringOfFire: 1
+  canvas: {fileID: 4409617582690769119, guid: 06dab170e6263a4429f25cc2592fb1cd, type: 3}
 --- !u!114 &3243360392424992554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,6 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trailCollisionSpawnPoint: {fileID: 3243360392399384685}
   trailCollisionPrefab: {fileID: 1111301393955562751, guid: 63e83e13411121d43ae6a7271425031f, type: 3}
+  speedBuffer: 0
 --- !u!1 &3243360392470136376
 GameObject:
   m_ObjectHideFlags: 0

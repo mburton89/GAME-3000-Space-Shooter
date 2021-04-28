@@ -7,6 +7,8 @@ public class PlayerShip : Ship
 {
     [HideInInspector] public bool canCollideWithTrail;
     [HideInInspector] public bool canTrailAttack;
+    public bool ringOfFire;
+
 
     private void Awake()
     {
@@ -17,6 +19,12 @@ public class PlayerShip : Ship
     {
         FollowMouse();
         HandleUserInput();
+        
+        if (ringOfFire)
+        {
+            this.canShoot = false;
+            this.maxSpeed = 8;
+        }
     }
 
     void HandleUserInput()
