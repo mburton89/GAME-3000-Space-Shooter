@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: 4bb41f1c84c6ad3478d50c6b124406fb
+guid: d143dda42ba4f6c4aa03b1bb79dbf1cb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2800715737579632502
-    second: flamethrower_0
+      213: -6253473820359388644
+    second: Missle_0
   - first:
-      213: -5748088590007121344
-    second: flamethrower_1
+      213: -3697783841700983220
+    second: Missle_1
+  - first:
+      213: 3585088248526239486
+    second: Missle_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: flamethrower_0
+      name: Missle_0
       rect:
         serializedVersion: 2
-        x: 49
-        y: 7
-        width: 81
-        height: 171
+        x: 63
+        y: 0
+        width: 54
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 677b74fdf142ed620800000000000000
-      internalID: 2800715737579632502
+      spriteID: c12164551b23739a0800000000000000
+      internalID: -6253473820359388644
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: flamethrower_1
+      name: Missle_1
       rect:
         serializedVersion: 2
-        x: 206
-        y: 7
-        width: 81
-        height: 171
+        x: 243
+        y: 0
+        width: 54
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +159,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04a462fc1efaa30b0800000000000000
-      internalID: -5748088590007121344
+      spriteID: c4ecb3b0035deacc0800000000000000
+      internalID: -3697783841700983220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Missle_2
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1
+        width: 54
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef675d574cac0c130800000000000000
+      internalID: 3585088248526239486
       vertices: []
       indices: 
       edges: []

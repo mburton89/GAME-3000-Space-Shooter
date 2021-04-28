@@ -63,6 +63,11 @@ public abstract class Ship : MonoBehaviour
         StartCoroutine(FireRateBuffer());
     }
 
+    public void BomberBoi()
+    {
+
+    }
+
     public void FireProjectile(Transform newTransform)
     {
         //TODO pass in Direction
@@ -108,6 +113,20 @@ public abstract class Ship : MonoBehaviour
         }
     }
 
+    public void GainArmor(int armorToGain)
+    {
+        currentArmor += armorToGain;
+        //hitSound.Play(); //TODO replace with powerup sound
+        if (currentArmor > maxArmor)
+        {
+            currentArmor = maxArmor;
+        }
+
+        if (GetComponent<PlayerShip>())
+        {
+            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+        }
+    }
     public void Explode()
     {
         Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
