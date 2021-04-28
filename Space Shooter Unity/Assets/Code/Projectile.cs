@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
 
             if (isMine)
             {
-                Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
+                Instantiate(Resources.Load("Explosion"), transform.position, transform.rotation);
             }
 
             Destroy(gameObject);

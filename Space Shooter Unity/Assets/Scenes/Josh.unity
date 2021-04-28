@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proxMinePrefab: {fileID: 6763768399812547540, guid: 1326f6c3cea3af64eb42b31c517d9bdb, type: 3}
   minesLeftCounter: 5
-  mineWaitTime: 35
+  mineWaitTime: 5
   mineSpawnPoint: {fileID: 939417227}
   canDrop: 1
   mineWarningText: {fileID: 373452769}
