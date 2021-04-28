@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public Rigidbody2D rigidBody2D;
     public int damageToGive;
     GameObject firingShip;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
