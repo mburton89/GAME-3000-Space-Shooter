@@ -7,7 +7,8 @@ public class EnemyShip : Ship
     public bool canShootPlayer;
     public bool canFlyTowardsPlayer;
     Transform target;
-
+    public float sightDistance;
+    private float DistanceFromPlayer;
     void Awake()
     {
         base.Awake();
@@ -25,14 +26,19 @@ public class EnemyShip : Ship
 
     void Update()
     {
+        DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
         base.Update();
-        if (canShootPlayer && canShoot)
+
+        if (DistanceFromPlayer < sightDistance)
         {
-            FireProjectile();
-        }
-        if (canFlyTowardsPlayer && target != null)
-        {
-            FlyTowardsPlayer();
+            if (canShootPlayer && canShoot)
+            {
+                FireProjectile();
+            }
+            if (canFlyTowardsPlayer && target != null)
+            {
+                FlyTowardsPlayer();
+            }
         }
     }
 

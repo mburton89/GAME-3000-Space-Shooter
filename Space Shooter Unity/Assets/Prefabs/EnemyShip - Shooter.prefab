@@ -298,6 +298,7 @@ MonoBehaviour:
   currentPosition: {x: 0, y: 0, z: 0}
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
+  sightDistance: 10
 --- !u!60 &6323168656124706024
 PolygonCollider2D:
   m_ObjectHideFlags: 0
