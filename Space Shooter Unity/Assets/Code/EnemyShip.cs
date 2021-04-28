@@ -9,14 +9,11 @@ public class EnemyShip : Ship
     public float fedUp;
     public bool quicked;
     Transform target;
-    public float Randomspeed = Random.Range(1, 3);
     void Awake()
     {
         base.Awake();
         target = FindObjectOfType<PlayerShip>().transform;
         fedUp = 0;
-        maxSpeed += Randomspeed;
-        acceleration += Randomspeed;
         quicked = true;
     }
 
