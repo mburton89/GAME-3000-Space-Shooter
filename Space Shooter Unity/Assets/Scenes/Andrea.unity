@@ -644,7 +644,7 @@ PrefabInstance:
       objectReference: {fileID: 457655712}
     - target: {fileID: 5463903366930004906, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
       propertyPath: segmentLength
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5463903366930004917, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
       propertyPath: m_CastShadows
