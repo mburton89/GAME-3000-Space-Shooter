@@ -55,8 +55,7 @@ public class ScreenShakeManager : MonoBehaviour
 
         float initialDuration = duration;
         _duration = duration;
-
-        _canShake = true;
+        
         yield return new WaitForSeconds(_duration);
         _canShake = false;
         transform.position = Vector3.zero;

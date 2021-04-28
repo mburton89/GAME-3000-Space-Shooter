@@ -7,13 +7,17 @@ public class EnemyShip : Ship
     public bool canShootPlayer;
     public bool canFlyTowardsPlayer;
     public float fedUp;
+    public bool quicked;
     Transform target;
-
+    public float Randomspeed = Random.Range(1, 3);
     void Awake()
     {
         base.Awake();
         target = FindObjectOfType<PlayerShip>().transform;
         fedUp = 0;
+        maxSpeed += Randomspeed;
+        acceleration += Randomspeed;
+        quicked = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -41,20 +45,20 @@ public class EnemyShip : Ship
     void FlyTowardsPlayer()
     {
         Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
+        float dist = Vector3.Distance(target.position, transform.position);
 
-        float distancex = Mathf.Abs(target.transform.position.x) - Mathf.Abs(transform.position.x);
-        float distancey = Mathf.Abs(target.transform.position.y) - Mathf.Abs(transform.position.y);
-        if (distancex >= 15 || distancex <= -15 || distancey >= 15 || distancey <= -15)
+        if(dist >= 15 && quicked == true )
         {
-            acceleration = 10;
-            maxSpeed = 40;
+            acceleration += 10;
+            maxSpeed += 40;
             fedUp++;
-
+            quicked = false;
         }
-        if (distancex <= 2 && distancex >= -2 && fedUp <=60    || distancey <= 2 && distancey >= -2 && fedUp <=60)
+        if (dist<=2 && fedUp <=3 && quicked == false)
         {
-            acceleration = 1;
-            maxSpeed = 4;
+            acceleration -= 10;
+            maxSpeed -= 40;
+            quicked = true;
         }
         transform.up = directionToFace;
         Thrust();

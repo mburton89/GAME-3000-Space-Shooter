@@ -11,6 +11,7 @@ public abstract class Ship : MonoBehaviour
     public AudioSource fireProjectileSound;
     public GameObject thrustParticlePrefab;
     public Transform particleSpawnPoint;
+    
 
     public float acceleration;
     public float maxSpeed;
