@@ -838,6 +838,30 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &819414506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1819149247999894977, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
+  m_PrefabInstance: {fileID: 1819149247911862362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &819414511
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819414506}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3b4888fb226752e41b44697fb8328254, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &863427250
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,6 +2182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1819149247999894981, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 40706306077705863, guid: 2c1a99d5bc5d20648b2b8946af3a2005, type: 3}
     - target: {fileID: 1819149247999895034, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
       propertyPath: m_RootOrder
       value: 7
