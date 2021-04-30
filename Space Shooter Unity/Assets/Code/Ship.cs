@@ -100,15 +100,20 @@ public abstract class Ship : MonoBehaviour
             currentArmor -= damageToTake;
             
             hitSound.Play();
-            if (GetComponent<ActualCCship>() && GetComponent<EnemyShip>())
+            while (GetComponent<ActualCCship>())
             {
+                if (GetComponent<EnemyShip>())
+                {
 
-                StartCoroutine(StunCo());
-                StartCoroutine(StunDuration());
+                    StartCoroutine(StunCo());
+                    StartCoroutine(StunDuration());
 
 
 
+                }
             }
+
+         
 
 
             if (currentArmor <= 0)
