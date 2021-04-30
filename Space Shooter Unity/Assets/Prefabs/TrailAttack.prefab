@@ -140,7 +140,7 @@ MonoBehaviour:
   scaleY: 0
   rigidBody2D: {fileID: 845377569529195978}
   explosionSound: {fileID: 8300000, guid: 5398cbcf6c78ed746a31e1be9a10dabf, type: 3}
-  playerShip: {fileID: 3243360392424992544, guid: f60111718766c2742913963d362d6b14, type: 3}
+  cdManager: {fileID: 4799217489558481438, guid: 4e42802b880f6b244a2786ef3ec28357, type: 3}
 --- !u!198 &1838093759
 ParticleSystem:
   m_ObjectHideFlags: 0

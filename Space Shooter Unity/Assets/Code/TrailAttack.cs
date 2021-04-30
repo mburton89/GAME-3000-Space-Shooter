@@ -8,9 +8,13 @@ public class TrailAttack : MonoBehaviour
     [HideInInspector] public float scaleY;
     public Rigidbody2D rigidBody2D;
     public AudioClip explosionSound;
+    [HideInInspector] public bool canSpawnCD = true;
+
     private void Start()
     {
         AudioSource.PlayClipAtPoint(explosionSound, transform.position);
+
+        canSpawnCD = true;
 
         Destroy(gameObject, 1);
     }
