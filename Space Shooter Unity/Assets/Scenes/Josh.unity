@@ -1612,7 +1612,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: c4ab53f3da1eb454d90f0bca1d52ffca, type: 3}
-  m_Color: {r: 0, g: 0.97032166, b: 1, a: 1}
+  m_Color: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1715,7 +1715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proxMinePrefab: {fileID: 6763768399812547540, guid: 1326f6c3cea3af64eb42b31c517d9bdb, type: 3}
   minesLeftCounter: 5
-  mineWaitTime: 5
+  mineWaitTime: 35
   mineSpawnPoint: {fileID: 939417227}
   canDrop: 1
   mineWarningText: {fileID: 373452769}
