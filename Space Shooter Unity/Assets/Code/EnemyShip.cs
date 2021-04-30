@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class EnemyShip : Ship
 {
- 
-    
+
+
     Transform target;
 
     void Awake()
     {
         base.Awake();
         target = FindObjectOfType<PlayerShip>().transform;
+     
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,7 +44,7 @@ public class EnemyShip : Ship
         Thrust();
     }
 
- 
+  
 
       
 

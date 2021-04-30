@@ -9,7 +9,6 @@ public class PlayerShip : Ship
 
 
 
-    
 
 
 
@@ -18,25 +17,7 @@ public class PlayerShip : Ship
     {
         FollowMouse();
         HandleUserInput();
-        if (Time.time > nextDashTime)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-
-                nextDashTime = Time.time + cooldowntime;
-                Dash();
-
-
-            }
-
-        }
-        else
-        {
-
-            print("on cooldown");
-        }
-
-
+        
 
     }
 
@@ -51,10 +32,7 @@ public class PlayerShip : Ship
         {
             FireProjectile();
         }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            FireProjectilestun();
-        }
+       
     }
     void Dash()
     {
@@ -67,7 +45,7 @@ public class PlayerShip : Ship
         canTakeDamage = false;
         acceleration = acceleration * 4;
         maxSpeed = maxSpeed * 4;
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.8f);
         canTakeDamage = true;
         acceleration = acceleration / 4;
         maxSpeed = maxSpeed / 4;

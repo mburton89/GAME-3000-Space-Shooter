@@ -13,6 +13,7 @@ public class EnemyShipSpawner : MonoBehaviour
     [HideInInspector] public int startingNumberOfShips;
     [HideInInspector] public int currentWave;
 
+    public List<PlayerShip> playerShips;
 
     private void Awake()
     {
@@ -32,11 +33,21 @@ public class EnemyShipSpawner : MonoBehaviour
             currentWave++;
             HUD.Instance.UpdateWaveText(currentWave);
             SpawnWaveOfShips();
+            
         }
     }
 
     void SpawnWaveOfShips()
     {
+        if (FindObjectOfType<PlayerShip>())
+        {
+            Vector3 spawnPostion = FindObjectOfType<PlayerShip>().transform.position;
+            Destroy(FindObjectOfType<PlayerShip>().gameObject);
+            int rand = Random.Range(0, playerShips.Count);
+            Instantiate(playerShips[rand], spawnPostion, transform.rotation, null);
+            CameraFollowPlayer.Instance.FindPlayer();
+        }
+
         int enemyShipsToSpawn = startingNumberOfShips + currentWave;
 
         for (int i = 0; i < enemyShipsToSpawn; i++)
@@ -50,4 +61,12 @@ public class EnemyShipSpawner : MonoBehaviour
             Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
         }
     }
+    void ChangeShips()
+    {
+
+
+        
+    }
+
+
 }

@@ -28,7 +28,7 @@ public abstract class Ship : MonoBehaviour
     public int direction;
     public Transform DashSpawn;
     public GameObject dashEffect;
-    public float cooldowntime = 5;
+    public float cooldowntime = 3;
     public float nextDashTime = 0;
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
@@ -42,6 +42,8 @@ public abstract class Ship : MonoBehaviour
         canShoot = true;
         canTakeDamage = true;
         canBeStunned = true;
+     
+
     }
    
     void FixedUpdate()
@@ -98,36 +100,37 @@ public abstract class Ship : MonoBehaviour
             currentArmor -= damageToTake;
             
             hitSound.Play();
-            if(GetComponent<ActualCCship>())
+            if (GetComponent<ActualCCship>() && GetComponent<EnemyShip>())
             {
-                if (GetComponent<EnemyShip>() && canBeStunned)
-                {
-                    StartCoroutine(StunCo());
-                    StartCoroutine(StunDuration());
 
-                }
-
-            }
-            if (GetComponent<EnemyShip>() && canBeStunned)
-            {
                 StartCoroutine(StunCo());
                 StartCoroutine(StunDuration());
-             
+
+
+
             }
+
+
             if (currentArmor <= 0)
             {
                 Explode();
             }
 
-            if (GetComponent<PlayerShip>())
+            if (GetComponent<PlayerShip>() || GetComponent<ActualCCship>() || GetComponent<ActualDashShip>())
             {
                 HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
             }
         }
+      
+
+
+
+
+
     }
 
 
-    private IEnumerator StunDuration()
+    public IEnumerator StunDuration()
     {
         print("can't be stunned");
         canBeStunned = false;
@@ -139,7 +142,7 @@ public abstract class Ship : MonoBehaviour
     }
 
 
-    private IEnumerator StunCo()
+    public IEnumerator StunCo()
     {
         canShootPlayer = false;
         canFlyTowardsPlayer = false;
