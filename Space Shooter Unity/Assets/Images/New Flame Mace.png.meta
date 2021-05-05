@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 15bba3ab98347954a91100866f6b4007
+guid: 2c1a99d5bc5d20648b2b8946af3a2005
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3820388802884471480
-    second: Mace  Colors_0
+      213: 40706306077705863
+    second: New Flame Mace_0
   - first:
-      213: 7780116077439085109
-    second: Mace  Colors_1
+      213: -3674443460659803220
+    second: New Flame Mace_1
   - first:
-      213: -3864245890978707840
-    second: Mace  Colors_2
+      213: -3011186762540563464
+    second: New Flame Mace_2
+  - first:
+      213: -3628284400125527966
+    second: New Flame Mace_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,7 +44,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: -1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mace  Colors_0
+      name: New Flame Mace_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 160
-        height: 160
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +117,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 845f03400a04bfac0800000000000000
-      internalID: -3820388802884471480
+      spriteID: 78641e17b2e909000800000000000000
+      internalID: 40706306077705863
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mace  Colors_1
+      name: New Flame Mace_1
       rect:
         serializedVersion: 2
-        x: 160
+        x: 128
         y: 0
-        width: 160
-        height: 160
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +138,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53aef030a5688fb60800000000000000
-      internalID: 7780116077439085109
+      spriteID: cab8d1cf321c10dc0800000000000000
+      internalID: -3674443460659803220
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mace  Colors_2
+      name: New Flame Mace_2
       rect:
         serializedVersion: 2
-        x: 320
+        x: 256
         y: 0
-        width: 160
-        height: 160
+        width: 128
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +159,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0868377f5d07f5ac0800000000000000
-      internalID: -3864245890978707840
+      spriteID: 8f3496ae79d1636d0800000000000000
+      internalID: -3011186762540563464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: New Flame Mace_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2683d62cf8eb5adc0800000000000000
+      internalID: -3628284400125527966
       vertices: []
       indices: 
       edges: []
