@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyShip : Ship
 {
-    public bool canShootPlayer;
-    public bool canFlyTowardsPlayer;
+
+
     Transform target;
     public float sightDistance;
     private float DistanceFromPlayer;
@@ -13,6 +13,8 @@ public class EnemyShip : Ship
     {
         base.Awake();
         target = FindObjectOfType<PlayerShip>().transform;
+     
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -48,4 +50,13 @@ public class EnemyShip : Ship
         transform.up = directionToFace;
         Thrust();
     }
+
+  
+
+      
+
 }
+
+
+
+

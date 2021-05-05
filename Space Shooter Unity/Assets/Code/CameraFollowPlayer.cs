@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    private Transform _player;
+    public static CameraFollowPlayer Instance;
+
+    [HideInInspector] public Transform player;
 
     void Start()
     {
-        _player = FindObjectOfType<PlayerShip>().transform;
+        Instance = this;
+        FindPlayer();
+    }
+
+    public void FindPlayer()
+    {
+        player = FindObjectOfType<PlayerShip>().transform;
     }
 
     void Update()
     {
-        if (_player != null)
+        if (player != null)
         {
-            transform.position = new Vector3(_player.position.x, _player.position.y, -10);
+            transform.position = new Vector3(player.position.x, player.position.y, -10);
         }
     }
 }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyShipSpawner : MonoBehaviour
 {
     public static EnemyShipSpawner Instance;
-    public Seed Seeder;
-    //public List<EnemyShip> enemyShipPrefabs;
+    public List<EnemyShip> enemyShipPrefabs;
 
     public Transform SpawnPivot;
     public Transform SpawnPoint;
@@ -14,6 +13,7 @@ public class EnemyShipSpawner : MonoBehaviour
     [HideInInspector] public int startingNumberOfShips;
     [HideInInspector] public int currentWave;
 
+    public List<PlayerShip> playerShips;
 
     private void Awake()
     {
@@ -24,32 +24,49 @@ public class EnemyShipSpawner : MonoBehaviour
 
     public void CountEnemyShips()
     {
-        int currentShips = FindObjectsOfType<EnemyShip>().Length + FindObjectsOfType<Seed>().Length;
+        int currentShips = FindObjectsOfType<EnemyShip>().Length;
 
-       // print(currentShips);
+        print(currentShips);
 
         if (currentShips == 1)
         {
             currentWave++;
             HUD.Instance.UpdateWaveText(currentWave);
             SpawnWaveOfShips();
+            
         }
     }
 
     void SpawnWaveOfShips()
     {
+        if (FindObjectOfType<PlayerShip>())
+        {
+            Vector3 spawnPostion = FindObjectOfType<PlayerShip>().transform.position;
+            Destroy(FindObjectOfType<PlayerShip>().gameObject);
+            int rand = Random.Range(0, playerShips.Count);
+            Instantiate(playerShips[rand], spawnPostion, transform.rotation, null);
+            CameraFollowPlayer.Instance.FindPlayer();
+        }
+
         int enemyShipsToSpawn = startingNumberOfShips + currentWave;
 
         for (int i = 0; i < enemyShipsToSpawn; i++)
         {
-            float zLength = Random.Range(0,100);
-            transform.localScale = new Vector3(zLength/100, zLength/100, 0);
+            int rand = Random.Range(0, enemyShipPrefabs.Count);
+
             //Determine Random Position Off the screen
             float zRotation = Random.Range(0, 360);
             SpawnPivot.eulerAngles = new Vector3(0, 0, zRotation);
 
-            Instantiate(Seeder, SpawnPoint.position, transform.rotation, null);
+            Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
         }
     }
+    void ChangeShips()
+    {
+
+
+        
+    }
+
 
 }
