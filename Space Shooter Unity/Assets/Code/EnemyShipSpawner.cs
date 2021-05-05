@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyShipSpawner : MonoBehaviour
 {
     public static EnemyShipSpawner Instance;
-    public List<EnemyShip> enemyShipPrefabs;
+    public Seed Seeder;
+    //public List<EnemyShip> enemyShipPrefabs;
 
     public Transform SpawnPivot;
     public Transform SpawnPoint;
@@ -23,9 +24,9 @@ public class EnemyShipSpawner : MonoBehaviour
 
     public void CountEnemyShips()
     {
-        int currentShips = FindObjectsOfType<EnemyShip>().Length;
+        int currentShips = FindObjectsOfType<EnemyShip>().Length + FindObjectsOfType<Seed>().Length;
 
-        print(currentShips);
+       // print(currentShips);
 
         if (currentShips == 1)
         {
@@ -41,13 +42,14 @@ public class EnemyShipSpawner : MonoBehaviour
 
         for (int i = 0; i < enemyShipsToSpawn; i++)
         {
-            int rand = Random.Range(0, enemyShipPrefabs.Count);
-
+            float zLength = Random.Range(0,100);
+            transform.localScale = new Vector3(zLength/100, zLength/100, 0);
             //Determine Random Position Off the screen
             float zRotation = Random.Range(0, 360);
             SpawnPivot.eulerAngles = new Vector3(0, 0, zRotation);
 
-            Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
+            Instantiate(Seeder, SpawnPoint.position, transform.rotation, null);
         }
     }
+
 }

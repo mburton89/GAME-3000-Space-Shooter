@@ -3,43 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : Ship
-
 {
-    [HideInInspector] public bool canCollideWithTrail;
-    [HideInInspector] public bool canTrailAttack;
-    public bool ringOfFire;
-
-
-    private void Awake()
-    {
-        canCollideWithTrail = true;
-        canTrailAttack = true;
-    }
     void Update()
     {
-        base.Update();
         FollowMouse();
         HandleUserInput();
-        
-        if (ringOfFire)
-        {
-            this.canShoot = false;
-            this.maxSpeed = 8;
-        }
+        ChargedShot();
+        float x;
+        x = chargePower/120;
+        this.GetComponent<SpriteRenderer>().color = new Color(x,1,1);
     }
 
     void HandleUserInput()
     {
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(1) && !leCharge)
         {
             Thrust();
         }
 
-        if (Input.GetMouseButtonDown(0) && canShoot)
-        {
-            FireProjectile();
-        }
 
+
+        if (Input.GetMouseButton(0))
+        {
+            if (canShoot)
+            {
+            leCharge = true;
+            }
+        }
     }
 
     void FollowMouse()
@@ -49,16 +39,4 @@ public class PlayerShip : Ship
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
     }
 
-    public void startBuffer()
-    {
-        StartCoroutine(TrailAttackBuffer());
-    }
-
-    private IEnumerator TrailAttackBuffer()
-    {
-        canTrailAttack = false;
-        yield return new WaitForSeconds(2);
-        canTrailAttack = true;
-    }
 }
- 
