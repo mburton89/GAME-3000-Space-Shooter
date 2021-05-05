@@ -33,30 +33,33 @@ public class EnemyShip : Ship
 
     void Update()
     {
-        if (target == null)
+        if (target == null || target == this.transform)
         {
             if (isAlly)
             {
-                target = FindObjectOfType<EnemyShip>().transform;
+                int rand = Random.Range(0, FindObjectsOfType<EnemyShip>().Length);
+                target = FindObjectsOfType<EnemyShip>()[rand].transform;
             }
             else
             {
                 return;
             }
-        } 
-
-        DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
-        base.Update();
-
-        if (DistanceFromPlayer < sightDistance)
+        }
+        else
         {
-            if (canShootPlayer && canShoot)
+            DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
+            base.Update();
+
+            if (DistanceFromPlayer < sightDistance)
             {
-                FireProjectile();
-            }
-            if (canFlyTowardsPlayer && target != null)
-            {
-                FlyTowardsPlayer();
+                if (canShootPlayer && canShoot)
+                {
+                    FireProjectile();
+                }
+                if (canFlyTowardsPlayer && target != null)
+                {
+                    FlyTowardsPlayer();
+                }
             }
         }
     }
