@@ -23,11 +23,20 @@ public abstract class Ship : MonoBehaviour
     [HideInInspector] public bool canShoot;
     [HideInInspector] public bool canShake;
 
+    [HideInInspector] public Vector3 previousPosition;
+    [HideInInspector] public Vector3 currentPosition;
+
     public void Awake()
     {
         currentArmor = maxArmor;
         canShoot = true;
         canShake = true;
+    }
+
+    public void Update()
+    {
+        previousPosition = currentPosition;
+        currentPosition = transform.position;
     }
 
     void FixedUpdate()
