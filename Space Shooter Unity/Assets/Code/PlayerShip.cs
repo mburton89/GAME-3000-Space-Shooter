@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShip : Ship
+
 {
+    [HideInInspector] public bool canCollideWithTrail;
+    [HideInInspector] public bool canTrailAttack;
+    public bool ringOfFire;
+
+
+    private void Awake()
+    {
+        canCollideWithTrail = true;
+        canTrailAttack = true;
+    }
     void Update()
     {
         FollowMouse();
         HandleUserInput();
+        
+        if (ringOfFire)
+        {
+            this.canShoot = false;
+            this.maxSpeed = 8;
+        }
     }
 
     void HandleUserInput()
@@ -30,4 +47,17 @@ public class PlayerShip : Ship
         Vector2 directionToFace = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); //creates direction based on positon of ship and mouse cursor 
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
     }
+
+    public void startBuffer()
+    {
+        StartCoroutine(TrailAttackBuffer());
+    }
+
+    private IEnumerator TrailAttackBuffer()
+    {
+        canTrailAttack = false;
+        yield return new WaitForSeconds(2);
+        canTrailAttack = true;
+    }
 }
+ 

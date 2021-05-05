@@ -23,6 +23,7 @@ public abstract class Ship : MonoBehaviour
     [HideInInspector] public float currentSpeed;
     [HideInInspector] public int currentArmor;
     [HideInInspector] public bool canShoot;
+    [HideInInspector] public bool canShake;
 
     public bool fireDouble;
 
@@ -30,6 +31,7 @@ public abstract class Ship : MonoBehaviour
     {
         currentArmor = maxArmor;
         canShoot = true;
+        canShake = true;
     }
 
     void FixedUpdate()
@@ -104,7 +106,12 @@ public abstract class Ship : MonoBehaviour
     {
         Instantiate(Resources.Load("ShipExplosion"), transform.position, transform.rotation);
         //ScreenShaker.Instance.ShakeScreen();
-        ScreenShakeManager.Instance.ShakeScreen();
+
+        if (canShake)
+        {
+            ScreenShakeManager.Instance.ShakeScreen();
+        }
+
         EnemyShipSpawner.Instance.CountEnemyShips();
 
         if (GetComponent<PlayerShip>())
