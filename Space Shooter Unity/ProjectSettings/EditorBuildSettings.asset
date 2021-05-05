@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 702c95909760c4afd990e1514f117417
   - enabled: 1
-    path: Assets/Scenes/Andrea.unity
+    path: Assets/Scenes/Andrea1.unity
     guid: 44313bd1bdf6b704aa4dfc919011d456
   - enabled: 1
     path: Assets/Scenes/Noah.unity
