@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Andrea.unity
     guid: 44313bd1bdf6b704aa4dfc919011d456
+  - enabled: 1
+    path: Assets/Scenes/Noah.unity
+    guid: 96dd73849a3ce234b932cc80801b8fd4
   - enabled: 0
     path: Assets/Scenes/Gameplay.unity
     guid: 2cda990e2423bbf4892e6590ba056729

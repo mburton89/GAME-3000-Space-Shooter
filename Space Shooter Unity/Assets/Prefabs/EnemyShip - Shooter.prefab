@@ -382,8 +382,11 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   fireDouble: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
+  sightDistance: 1000
 --- !u!60 &9042039353177308157
 PolygonCollider2D:
   m_ObjectHideFlags: 0

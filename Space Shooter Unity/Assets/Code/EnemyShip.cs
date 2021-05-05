@@ -26,6 +26,7 @@ public class EnemyShip : Ship
 
     void Update()
     {
+        if (target == null) return;
         DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
         base.Update();
 

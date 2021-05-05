@@ -319,7 +319,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7a492c528b5aa47679368ed0a2c08bc2, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.36862746, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -382,8 +382,11 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   fireDouble: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
   canShootPlayer: 0
   canFlyTowardsPlayer: 1
+  sightDistance: 1000
 --- !u!60 &3819710320930294894
 PolygonCollider2D:
   m_ObjectHideFlags: 0

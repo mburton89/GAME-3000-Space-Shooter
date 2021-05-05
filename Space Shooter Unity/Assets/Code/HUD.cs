@@ -30,6 +30,9 @@ public class HUD : MonoBehaviour
 
     public void UpdateAmmoCountText(int currentAmmo, int maxAmmo)
     {
-        limiterText.SetText("Projectiles Fired: " + currentAmmo + "/" + maxAmmo);
+        if (limiterText != null)
+        {
+            limiterText.SetText("Projectiles Fired: " + currentAmmo + "/" + maxAmmo);
+        }
     }
 }

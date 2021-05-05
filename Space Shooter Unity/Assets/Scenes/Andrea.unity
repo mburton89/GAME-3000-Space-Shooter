@@ -635,6 +635,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3121525837879718174, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
+      propertyPath: maxArmor
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3121525837879718174, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
       propertyPath: hasBulletLimit
       value: 0
       objectReference: {fileID: 0}
@@ -969,6 +973,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2370439361266131128, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
+      propertyPath: sightDistance
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 6227067149992434976, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -1733,6 +1741,8 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 1
   fireDouble: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
   hasBulletLimit: 1
 --- !u!114 &1426788168
 MonoBehaviour:
@@ -2218,14 +2228,6 @@ PrefabInstance:
     - target: {fileID: 6227067149992434976, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227067149992434983, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6227067149992434983, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
-      propertyPath: m_Color.g
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6227067149992435002, guid: 8b7d2dc3a74fb404e960b670ea023e40, type: 3}
       propertyPath: m_Name
