@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
     {
         if (collision.GetComponent<Ship>() && collision.gameObject != firingShip)//&& collisision.GetComponent<Ship>(currentArmor > 0)
         {
-            this.currenthp -= 1;
+            this.currenthp--;
             collision.GetComponent<Ship>().TakeDamage(damageToGive);
             //firingShip.GetComponent<Ship>().Regen();
             if (currenthp <= 0)
