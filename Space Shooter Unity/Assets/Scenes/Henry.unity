@@ -1528,6 +1528,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2833623668849051670, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
+      propertyPath: sightDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833623668849051670, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
+      propertyPath: acceleration
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2833623668849051671, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
       propertyPath: m_Name
       value: EnemyShip - Turret (2)
@@ -1583,6 +1591,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2833623668849051666, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833623668849051670, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
+      propertyPath: sightDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833623668849051670, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
+      propertyPath: acceleration
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2833623668849051671, guid: 6623d45cf585a3e42a02b6866f5a1104, type: 3}
