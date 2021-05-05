@@ -1742,8 +1742,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3121525837879718174, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
       propertyPath: hasBulletLimit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3121525837879718174, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
+      propertyPath: allyProjectilePrefab
+      value: 
+      objectReference: {fileID: 6763768399812547540, guid: b3ebce36e48c5a44887a5ca1bf6d93d9, type: 3}
+    - target: {fileID: 3121525837879718174, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
+      propertyPath: absorbProjectilePrefab
+      value: 
+      objectReference: {fileID: 6763768399812547540, guid: 0fc67c451c46c304db5f5ede4a516089, type: 3}
     - target: {fileID: 5463903366930004906, guid: b542009c3c85ff14aace66478d0922e0, type: 3}
       propertyPath: _ball
       value: 

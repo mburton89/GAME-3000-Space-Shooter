@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerShip : Ship
 {
+    public Projectile absorbProjectilePrefab;
+    public Projectile allyProjectilePrefab;
 
     public bool hasBulletLimit; //on/off switch for the bullet limit challenege.
+    public int numberOfAbsorbProjectiles;
+    public int numberOfAllyProjectiles;
 
     void Start()
     {
         currentAmmo = 0;
-        HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
+        UpdateHud();
     }
 
     void Update()
@@ -40,10 +44,43 @@ public class PlayerShip : Ship
             }
             else//if the bullet limiter is not cheecked
             {
-                FireProjectile();
+                if (numberOfAbsorbProjectiles > 0)
+                {
+                    FireAbsorbProjectile();
+                }
+                else if (numberOfAllyProjectiles > 0)
+                {
+                    FireAllyProjectile();
+                }
+                else
+                {
+                    FireProjectile();
+                }
             }
         }
 
+    }
+
+    public void FireAbsorbProjectile()
+    {
+        Projectile projectile = Instantiate(absorbProjectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        projectile.Init(this.gameObject);
+        Destroy(projectile.gameObject, 4);
+        fireProjectileSound.Play();
+        numberOfAbsorbProjectiles--;
+    }
+
+    public void FireAllyProjectile()
+    {
+        Projectile projectile = Instantiate(allyProjectilePrefab, projectileSpawnPoint.position, transform.rotation) as Projectile;
+        Instantiate(thrustParticlePrefab, projectileSpawnPoint.position, transform.rotation);
+        projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
+        projectile.Init(this.gameObject);
+        Destroy(projectile.gameObject, 4);
+        fireProjectileSound.Play();
+        numberOfAllyProjectiles--;
     }
 
     void FollowMouse()
@@ -51,5 +88,19 @@ public class PlayerShip : Ship
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 10)); //Finds Mouse Position on Screen
         Vector2 directionToFace = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y); //creates direction based on positon of ship and mouse cursor 
         transform.up = directionToFace; //Faces Mouse. Assigns transform.up the Direction to Face
+    }
+
+    public void AddHealth(int healthToAdd)
+    {
+        if (currentArmor < maxArmor)
+        {
+            currentArmor += healthToAdd;
+            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+        }
+    }
+
+    public void UpdateHud()
+    {
+        HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
     }
 }

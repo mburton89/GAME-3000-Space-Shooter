@@ -6,12 +6,14 @@ public class EnemyShip : Ship
 {
     public bool canShootPlayer;
     public bool canFlyTowardsPlayer;
-    Transform target;
+    [HideInInspector] public Transform target;
+    [HideInInspector] public bool isAlly;
     public float sightDistance;
     private float DistanceFromPlayer;
     void Awake()
     {
         base.Awake();
+        isAlly = false;
         target = FindObjectOfType<PlayerShip>().transform;
     }
 
@@ -22,11 +24,27 @@ public class EnemyShip : Ship
             Explode();
             collision.gameObject.GetComponent<PlayerShip>().TakeDamage(1);
         }
+        else if (collision.gameObject.GetComponent<EnemyShip>() && isAlly)
+        {
+            TakeDamage(1);
+            collision.gameObject.GetComponent<EnemyShip>().Explode();
+        }
     }
 
     void Update()
     {
-        if (target == null) return;
+        if (target == null)
+        {
+            if (isAlly)
+            {
+                target = FindObjectOfType<EnemyShip>().transform;
+            }
+            else
+            {
+                return;
+            }
+        } 
+
         DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
         base.Update();
 

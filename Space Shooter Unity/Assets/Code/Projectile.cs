@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public enum ProjectileType
+    {
+        normal,
+        absorb,
+        ally
+    }
+
+    public ProjectileType activeProjectileType;
+
     public Rigidbody2D rigidBody2D;
     public int damageToGive;
     GameObject firingShip;
@@ -14,6 +23,16 @@ public class Projectile : MonoBehaviour
         {
             collision.GetComponent<Ship>().TakeDamage(damageToGive);
             Destroy(gameObject);
+
+            if (activeProjectileType == ProjectileType.absorb)
+            {
+                FindObjectOfType<PlayerShip>().AddHealth(1);
+            }
+            else if (activeProjectileType == ProjectileType.ally)
+            {
+                collision.GetComponent<EnemyShip>().target = FindObjectOfType<EnemyShip>().transform;
+                collision.GetComponent<EnemyShip>().isAlly = true;
+            }
         }
     }
 
