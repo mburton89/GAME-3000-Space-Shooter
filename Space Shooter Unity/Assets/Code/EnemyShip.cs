@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemyShip : Ship
 {
+    public float turretDistance;
     public bool canShootPlayer;
     public bool canFlyTowardsPlayer;
+    public bool turret;
     Transform target;
 
     void Awake()
@@ -25,6 +27,8 @@ public class EnemyShip : Ship
 
     void Update()
     {
+        float distance = Vector3.Distance(target.position, transform.position);
+
         if (canShootPlayer && canShoot)
         {
             FireProjectile();
@@ -32,6 +36,19 @@ public class EnemyShip : Ship
         if (canFlyTowardsPlayer && target != null)
         {
             FlyTowardsPlayer();
+        }
+
+        if (turret)
+        {
+            if (distance >= turretDistance)
+            {
+                canShootPlayer = false;
+            }
+
+            else
+            {
+                canShootPlayer = true;
+            }
         }
     }
 

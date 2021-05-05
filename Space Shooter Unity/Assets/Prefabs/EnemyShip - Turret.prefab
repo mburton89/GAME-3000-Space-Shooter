@@ -416,14 +416,16 @@ MonoBehaviour:
   acceleration: 2
   maxSpeed: 0
   maxArmor: 5
-  fireRate: 0.5
-  projectileSpeed: 33
+  fireRate: 0.33
+  projectileSpeed: 50
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
   canShake: 0
+  turretDistance: 10
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
+  turret: 1
 --- !u!58 &2833623668849051665
 CircleCollider2D:
   m_ObjectHideFlags: 0
