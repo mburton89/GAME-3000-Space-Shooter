@@ -17,6 +17,7 @@ public class PlayerShip : Ship
     }
     void Update()
     {
+        base.Update();
         FollowMouse();
         HandleUserInput();
         

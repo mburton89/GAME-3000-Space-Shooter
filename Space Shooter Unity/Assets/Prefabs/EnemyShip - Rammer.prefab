@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 6227067149992434983}
   - component: {fileID: 6227067149992434981}
   - component: {fileID: 2370439361266131128}
-  - component: {fileID: 7682591458173240095}
+  - component: {fileID: 3819710320930294894}
   m_Layer: 0
   m_Name: EnemyShip - Rammer
   m_TagString: Untagged
@@ -287,17 +287,19 @@ MonoBehaviour:
   thrustParticlePrefab: {fileID: 4423072926202384115, guid: d6ca01033c5384f86926e46c7fe2e95b, type: 3}
   particleSpawnPoint: {fileID: 1327745372}
   acceleration: 1
-  maxSpeed: 10
+  maxSpeed: 3
   maxArmor: 3
   fireRate: 2
   projectileSpeed: 50
   currentSpeed: 0
   currentArmor: 0
   canShoot: 0
-  canShake: 0
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
   canShootPlayer: 0
   canFlyTowardsPlayer: 1
---- !u!60 &7682591458173240095
+  sightDistance: 7
+--- !u!60 &3819710320930294894
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -322,12 +324,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.071428575, y: 0.39285716}
-      - {x: -0.8571429, y: -0.39285716}
-      - {x: -0.8571429, y: -0.67857146}
-      - {x: 0.8571429, y: -0.67857146}
-      - {x: 0.8571429, y: -0.39285716}
-      - {x: 0.071428575, y: 0.39285716}
+    - - {x: -0.027434386, y: 0.28601435}
+      - {x: -0.8508582, y: -0.51226974}
+      - {x: -0.8508594, y: -0.62200785}
+      - {x: 0.86342764, y: -0.6094384}
+      - {x: 0.86342764, y: -0.52483976}
+      - {x: -0.01025486, y: 0.2929142}
+      - {x: 0.008580245, y: 0.29858407}
 --- !u!1 &6227067150199430648
 GameObject:
   m_ObjectHideFlags: 0
