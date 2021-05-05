@@ -44,22 +44,20 @@ public class EnemyShip : Ship
             {
                 return;
             }
-        }
-        else
-        {
-            DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
-            base.Update();
+        } 
 
-            if (DistanceFromPlayer < sightDistance)
+        DistanceFromPlayer = Vector3.Distance(target.position, transform.position);
+        base.Update();
+
+        if (DistanceFromPlayer < sightDistance)
+        {
+            if (canShootPlayer && canShoot)
             {
-                if (canShootPlayer && canShoot)
-                {
-                    FireProjectile();
-                }
-                if (canFlyTowardsPlayer && target != null)
-                {
-                    FlyTowardsPlayer();
-                }
+                FireProjectile();
+            }
+            if (canFlyTowardsPlayer && target != null)
+            {
+                FlyTowardsPlayer();
             }
         }
     }
