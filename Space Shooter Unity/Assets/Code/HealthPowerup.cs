@@ -13,6 +13,7 @@ public class HealthPowerup : MonoBehaviour
         {
             int healthToGive = Random.Range(minHealthToGive, maxHealthToGive);
             collision.GetComponent<PlayerShip>().GainArmor(healthToGive);
+            GameManager.Instance.health.Play();
             Destroy(gameObject);
         }
     }
@@ -23,6 +24,7 @@ public class HealthPowerup : MonoBehaviour
         {
             int healthToGive = Random.Range(minHealthToGive, maxHealthToGive);
             collision.gameObject.GetComponent<PlayerShip>().GainArmor(healthToGive);
+            GameManager.Instance.health.Play();
             Destroy(gameObject);
         }
     }

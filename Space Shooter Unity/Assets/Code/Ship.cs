@@ -86,7 +86,10 @@ public abstract class Ship : MonoBehaviour
         //Instantiate(FlamesPrefab, projectileSpawnPoint.position, transform.rotation);
         projectile.rigidBody2D.AddForce(transform.up * projectileSpeed);
         projectile.Init(this.gameObject);
-        fireProjectileSound.Play();
+        if (!fireProjectileSound.isPlaying)
+        {
+            fireProjectileSound.Play();
+        }
         Destroy(projectile.gameObject, .3f);
         StartCoroutine(FireRateBuffer());
     }

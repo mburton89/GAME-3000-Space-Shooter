@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    public AudioSource health;
+
     private void Awake()
     {
         Instance = this;
