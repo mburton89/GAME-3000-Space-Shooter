@@ -51,10 +51,28 @@ public abstract class Ship : MonoBehaviour
     {
         rigidBody2D.AddForce(transform.up * acceleration); //Add force in the direction we're facing
         currentSpeed = maxSpeed; //Set our speed to our max speed
-        float randomX = Random.Range(-0.1f, 0.1f);
-        float randomY = Random.Range(-0.1f, 0.1f);
-        Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
-        Instantiate(thrustParticlePrefab, spawnPosition, transform.rotation);
+        //float randomX = Random.Range(-0.1f, 0.1f);
+        //float randomY = Random.Range(-0.1f, 0.1f);
+        //Vector3 spawnPosition = new Vector3(particleSpawnPoint.position.x + randomX, particleSpawnPoint.position.y + randomY);
+        //Instantiate(thrustParticlePrefab, spawnPosition, transform.rotation);
+    }
+    public void LeftThrust()
+    {
+        rigidBody2D.AddForce(-transform.right * acceleration); //Add force in the direction we're facing
+        currentSpeed = maxSpeed; //Set our speed to our max speed
+        
+    }
+    public void RightThrust()
+    {
+        rigidBody2D.AddForce(transform.right * acceleration); //Add force in the direction we're facing
+        currentSpeed = maxSpeed; //Set our speed to our max speed
+        
+    }
+    public void BackThrust()
+    {
+        rigidBody2D.AddForce(-transform.up * acceleration); //Add force in the direction we're facing
+        currentSpeed = maxSpeed; //Set our speed to our max speed
+        
     }
 
     public void FireProjectile()

@@ -16,19 +16,56 @@ public class PlayerShip : Ship
 
     void HandleUserInput()
     {
-        if (Input.GetMouseButton(1) && !leCharge)
+        if (Input.GetKey("w") && !leCharge)
         {
             Thrust();
+        }
+        if (Input.GetKey("d") && !leCharge)
+        {
+            RightThrust();
+        }
+        if (Input.GetKey("a") && !leCharge)
+        {
+            LeftThrust();
+        }
+        if (Input.GetKey("s") && !leCharge)
+        {
+            BackThrust();
         }
 
 
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //Lclick
         {
             if (canShoot)
             {
             leCharge = true;
             }
+        }
+        if (Input.GetMouseButton(1))//Rclick
+        {
+            if (canShoot)
+            {
+            leCharge = true;
+            }
+        }
+        if (Input.GetMouseButton(2))//mousewheel click
+        {
+            if (canShoot)
+            {
+            leCharge = true;
+            }
+        }
+        if (Input.GetMouseButton(0) && Input.GetMouseButton(1))//nothing yet
+        {
+            if (canShoot)
+            {
+            leCharge = true;
+            }
+        }
+        if (Input.GetKey("space"))
+        {
+            maxSpeed= maxSpeed*4;
         }
     }
 
