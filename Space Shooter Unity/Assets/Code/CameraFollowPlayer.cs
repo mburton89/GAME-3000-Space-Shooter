@@ -8,7 +8,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     void Start()
     {
-        _player = FindObjectOfType<PlayerShip>().transform;
+        _player = FindObjectOfType<PlayerShip2>().transform;
     }
 
     void Update()

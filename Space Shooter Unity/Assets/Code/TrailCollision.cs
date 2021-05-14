@@ -11,7 +11,7 @@ public class TrailCollision : MonoBehaviour
     [HideInInspector] public double initializationTime;
     [HideInInspector] public double timeSinceInitialization;
     [HideInInspector] public double halfTimeSinceInitialization;
-    public PlayerShip playerShip;
+    public PlayerShip2 playerShip;
 
     private void Start()
     {
@@ -28,11 +28,11 @@ public class TrailCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail
-            && FindObjectOfType<PlayerShip>().canTrailAttack && collision.GetComponent<PlayerShip>().currentSpeed >= 
-            collision.GetComponent<PlayerShip>().maxSpeed * (3 / 4))
+        if (collision.GetComponent<PlayerShip2>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip2>().canCollideWithTrail
+            && FindObjectOfType<PlayerShip2>().canTrailAttack && collision.GetComponent<PlayerShip2>().currentSpeed >= 
+            collision.GetComponent<PlayerShip2>().maxSpeed * (3 / 4))
         {
-            collision.GetComponent<PlayerShip>().canCollideWithTrail = false;
+            collision.GetComponent<PlayerShip2>().canCollideWithTrail = false;
             TrailCollision[] allTrailCollisions = FindObjectsOfType<TrailCollision>();
             foreach (TrailCollision trailCollision in allTrailCollisions)
             {
@@ -44,9 +44,9 @@ public class TrailCollision : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShip>())
+        if (collision.GetComponent<PlayerShip2>())
         {
-            collision.GetComponent<PlayerShip>().canCollideWithTrail = true;
+            collision.GetComponent<PlayerShip2>().canCollideWithTrail = true;
         }
     }
 
@@ -68,6 +68,6 @@ public class TrailCollision : MonoBehaviour
         {
             trailAttack.changeScale(timeSinceInitHalf);
         }
-        FindObjectOfType<PlayerShip>().startBuffer();
+        FindObjectOfType<PlayerShip2>().startBuffer();
     }
 }

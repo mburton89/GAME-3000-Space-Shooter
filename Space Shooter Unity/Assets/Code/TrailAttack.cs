@@ -26,10 +26,10 @@ public class TrailAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<EnemyShip>())
+        if (collision.GetComponent<EnemyShip2>())
         {
-            collision.GetComponent<EnemyShip>().canShake = false;
-            collision.GetComponent<EnemyShip>().Explode();
+            collision.GetComponent<EnemyShip2>().canShake = false;
+            collision.GetComponent<EnemyShip2>().Explode();
         }
     }
 

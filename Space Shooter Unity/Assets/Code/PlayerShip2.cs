@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShip : Ship
+public class PlayerShip2 : Ship
 
 {
     [HideInInspector] public bool canCollideWithTrail;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyShipSpawner : MonoBehaviour
 {
     public static EnemyShipSpawner Instance;
-    public List<EnemyShip> enemyShipPrefabs;
+    public List<EnemyShip2> enemyShipPrefabs;
 
     public Transform SpawnPivot;
     public Transform SpawnPoint;
@@ -18,12 +18,12 @@ public class EnemyShipSpawner : MonoBehaviour
     {
         Instance = this;
         currentWave = 1;
-        startingNumberOfShips = FindObjectsOfType<EnemyShip>().Length;
+        startingNumberOfShips = FindObjectsOfType<EnemyShip2>().Length;
     }
 
     public void CountEnemyShips()
     {
-        int currentShips = FindObjectsOfType<EnemyShip>().Length;
+        int currentShips = FindObjectsOfType<EnemyShip2>().Length;
 
         print(currentShips);
 

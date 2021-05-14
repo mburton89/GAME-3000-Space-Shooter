@@ -75,7 +75,7 @@ public abstract class Ship : MonoBehaviour
             Explode();
         }
 
-        if (GetComponent<PlayerShip>())
+        if (GetComponent<PlayerShip2>())
         {
             HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
         }
@@ -93,7 +93,7 @@ public abstract class Ship : MonoBehaviour
 
         EnemyShipSpawner.Instance.CountEnemyShips();
 
-        if (GetComponent<PlayerShip>())
+        if (GetComponent<PlayerShip2>())
         {
             GameManager.Instance.HandlePlayerDestroyed();
         }

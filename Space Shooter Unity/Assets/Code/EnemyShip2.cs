@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShip : Ship
+public class EnemyShip2 : Ship
 {
     public float turretDistance;
     public bool canShootPlayer;
@@ -13,15 +13,15 @@ public class EnemyShip : Ship
     void Awake()
     {
         base.Awake();
-        target = FindObjectOfType<PlayerShip>().transform;
+        target = FindObjectOfType<PlayerShip2>().transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<PlayerShip>())
+        if (collision.gameObject.GetComponent<PlayerShip2>())
         {
             Explode();
-            collision.gameObject.GetComponent<PlayerShip>().TakeDamage(1);
+            collision.gameObject.GetComponent<PlayerShip2>().TakeDamage(1);
         }
     }
 

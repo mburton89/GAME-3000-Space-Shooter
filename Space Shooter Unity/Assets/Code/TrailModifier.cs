@@ -21,7 +21,7 @@ public class TrailModifier : MonoBehaviour
 
     void CreateTrail()
     {
-        if (GetComponent<PlayerShip>().rigidBody2D.velocity.magnitude >= GetComponent<PlayerShip>().maxSpeed / 5)
+        if (GetComponent<PlayerShip2>().rigidBody2D.velocity.magnitude >= GetComponent<PlayerShip2>().maxSpeed / 5)
         {
             speedBuffer = false;
         }
@@ -31,7 +31,7 @@ public class TrailModifier : MonoBehaviour
             speedBuffer = true;
         }
 
-        if (!speedBuffer && GetComponent<PlayerShip>().ringOfFire)
+        if (!speedBuffer && GetComponent<PlayerShip2>().ringOfFire)
         {
             TrailCollision trailColl = Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation) as TrailCollision;
             Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation);
