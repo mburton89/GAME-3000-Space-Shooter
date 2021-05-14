@@ -82,7 +82,7 @@ public class EnemyShip : Ship
             maxSpeed = _hyperSpeed;
             acceleration = _hyperAcceleration;
         }
-        else
+        if (distanceFromPlayer < 3)
         {
             maxSpeed = _initialMaxSpeed;
             acceleration = _initialAcceleration;
