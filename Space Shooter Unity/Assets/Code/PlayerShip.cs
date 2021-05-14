@@ -14,6 +14,7 @@ public class PlayerShip : Ship
     {
         canCollideWithTrail = true;
         canTrailAttack = true;
+        currentArmor = maxArmor;
     }
     void Update()
     {

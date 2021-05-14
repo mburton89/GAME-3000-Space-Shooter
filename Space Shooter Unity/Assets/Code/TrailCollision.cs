@@ -16,7 +16,7 @@ public class TrailCollision : MonoBehaviour
     private void Start()
     {
         initializationTime = Time.timeSinceLevelLoad;
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 3);
 
     }
 

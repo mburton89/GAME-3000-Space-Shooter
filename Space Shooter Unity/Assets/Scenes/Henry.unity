@@ -1606,6 +1606,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3243360392424992549, guid: f60111718766c2742913963d362d6b14, type: 3}
+      propertyPath: maxArmor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3243360392424992551, guid: f60111718766c2742913963d362d6b14, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
