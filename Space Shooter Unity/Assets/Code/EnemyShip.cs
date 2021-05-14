@@ -10,9 +10,18 @@ public class EnemyShip : Ship
     [HideInInspector] public bool isAlly;
     public float sightDistance;
     private float DistanceFromPlayer;
+
+    private float _initialMaxSpeed;
+    private float _initialAcceleration;
+    [SerializeField] private float _hyperSpeed;
+    [SerializeField] private float _hyperAcceleration;
+    [SerializeField] private float _maxDistanceFromPlayer;
+
     void Awake()
     {
         base.Awake();
+        _initialMaxSpeed = maxSpeed;
+        _initialAcceleration = acceleration;
         isAlly = false;
         target = FindObjectOfType<PlayerShip>().transform;
     }
@@ -66,6 +75,19 @@ public class EnemyShip : Ship
     {
         Vector2 directionToFace = new Vector2(target.position.x - transform.position.x, target.transform.position.y - transform.position.y);
         transform.up = directionToFace;
+
+        float distanceFromPlayer = Vector3.Distance(transform.position, target.position);
+        if (distanceFromPlayer > _maxDistanceFromPlayer)
+        {
+            maxSpeed = _hyperSpeed;
+            acceleration = _hyperAcceleration;
+        }
+        else
+        {
+            maxSpeed = _initialMaxSpeed;
+            acceleration = _initialAcceleration;
+        }
+
         Thrust();
     }
 }

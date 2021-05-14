@@ -386,7 +386,12 @@ MonoBehaviour:
   currentPosition: {x: 0, y: 0, z: 0}
   canShootPlayer: 1
   canFlyTowardsPlayer: 1
+  target: {fileID: 0}
+  isAlly: 0
   sightDistance: 1000
+  _hyperSpeed: 10
+  _hyperAcceleration: 6
+  _maxDistanceFromPlayer: 6
 --- !u!60 &9042039353177308157
 PolygonCollider2D:
   m_ObjectHideFlags: 0
