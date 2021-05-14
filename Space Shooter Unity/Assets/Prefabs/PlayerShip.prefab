@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3121525837879718174}
   - component: {fileID: 3121525837879718161}
   - component: {fileID: 3121525837879718170}
+  - component: {fileID: 1411220620}
   m_Layer: 0
   m_Name: PlayerShip
   m_TagString: Untagged
@@ -138,7 +139,7 @@ MonoBehaviour:
   particleSpawnPoint: {fileID: 3121525839549963207}
   acceleration: 4
   maxSpeed: 6
-  maxArmor: 20
+  maxArmor: 5
   fireRate: 0
   projectileSpeed: 100
   maxAmmo: 20
@@ -147,7 +148,13 @@ MonoBehaviour:
   canShoot: 0
   currentAmmo: 0
   fireDouble: 1
-  hasBulletLimit: 1
+  previousPosition: {x: 0, y: 0, z: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  absorbProjectilePrefab: {fileID: 6763768399812547540, guid: 0fc67c451c46c304db5f5ede4a516089, type: 3}
+  allyProjectilePrefab: {fileID: 6763768399812547540, guid: b3ebce36e48c5a44887a5ca1bf6d93d9, type: 3}
+  hasBulletLimit: 0
+  numberOfAbsorbProjectiles: 0
+  numberOfAllyProjectiles: 0
 --- !u!114 &3121525837879718161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +218,24 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1411220620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3121525837879718171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671f02ea965696848a2174620032f123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  proxMinePrefab: {fileID: 6763768399812547540, guid: 172588f3fa8ee294e8d32951e5eb96fe, type: 3}
+  minesLeftCounter: 5
+  mineWaitTime: 10
+  mineSpawnPoint: {fileID: 3121525839549963207}
+  canDrop: 1
+  mineWarningText: {fileID: 0}
 --- !u!1 &3121525837926963203
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +767,10 @@ PrefabInstance:
       propertyPath: m_ReceiveShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6954204473470353623, guid: 3389eec18293f80458d9a767d3713cf3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77d2b5286cb17fd4fbd79806849869bc, type: 2}
     - target: {fileID: 6954204473470353623, guid: 3389eec18293f80458d9a767d3713cf3, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.074618176

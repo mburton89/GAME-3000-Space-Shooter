@@ -11,6 +11,20 @@ public class PlayerShip : Ship
     public int numberOfAbsorbProjectiles;
     public int numberOfAllyProjectiles;
 
+    public GameObject rope;
+    public GameObject mace;
+
+    public enum Special
+    {
+        absorb,
+        ally,
+        dash,
+        mines,
+        mace
+    }
+
+    public Special currentSpecial;
+
     void Start()
     {
         currentAmmo = 0;
@@ -59,6 +73,34 @@ public class PlayerShip : Ship
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            UseSpecial();
+        }
+    }
+
+    void UseSpecial()
+    {
+        if (currentSpecial == Special.absorb && numberOfAbsorbProjectiles > 0)
+        {
+            FireAbsorbProjectile();
+        }
+        else if (currentSpecial == Special.ally && numberOfAllyProjectiles > 0)
+        {
+
+        }
+        else if (currentSpecial == Special.dash)
+        {
+
+        }
+        else if (currentSpecial == Special.mines)
+        {
+
+        }
+        else if (currentSpecial == Special.mace)
+        {
+
+        }
     }
 
     public void FireAbsorbProjectile()
