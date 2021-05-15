@@ -142,7 +142,7 @@ MonoBehaviour:
   initializationTime: 0
   timeSinceInitialization: 0
   halfTimeSinceInitialization: 0
-  playerShip: {fileID: 3243360392424992549, guid: f60111718766c2742913963d362d6b14, type: 3}
+  playerShip: {fileID: 0}
 --- !u!61 &6472629203287953794
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -167,5 +167,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 2.29}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0

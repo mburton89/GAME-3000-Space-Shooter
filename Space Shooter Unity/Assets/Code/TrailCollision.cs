@@ -11,13 +11,12 @@ public class TrailCollision : MonoBehaviour
     [HideInInspector] public double initializationTime;
     [HideInInspector] public double timeSinceInitialization;
     [HideInInspector] public double halfTimeSinceInitialization;
-    public PlayerShip playerShip;
+    public HPlayerShip playerShip;
 
     private void Start()
     {
         initializationTime = Time.timeSinceLevelLoad;
         Destroy(gameObject, 3);
-
     }
 
     private void Update()
@@ -28,11 +27,11 @@ public class TrailCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<PlayerShip>().canCollideWithTrail
-            && FindObjectOfType<PlayerShip>().canTrailAttack && collision.GetComponent<PlayerShip>().currentSpeed >= 
-            collision.GetComponent<PlayerShip>().maxSpeed * (3 / 4))
+        if (collision.GetComponent<HPlayerShip>() && (timeSinceInitialization > 0.5) && collision.GetComponent<HPlayerShip>().canCollideWithTrail
+            && FindObjectOfType<HPlayerShip>().canTrailAttack && collision.GetComponent<HPlayerShip>().currentSpeed >= 
+            collision.GetComponent<HPlayerShip>().maxSpeed * (3 / 4))
         {
-            collision.GetComponent<PlayerShip>().canCollideWithTrail = false;
+            collision.GetComponent<HPlayerShip>().canCollideWithTrail = false;
             TrailCollision[] allTrailCollisions = FindObjectsOfType<TrailCollision>();
             foreach (TrailCollision trailCollision in allTrailCollisions)
             {
@@ -44,9 +43,9 @@ public class TrailCollision : MonoBehaviour
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<PlayerShip>())
+        if (collision.GetComponent<HPlayerShip>())
         {
-            collision.GetComponent<PlayerShip>().canCollideWithTrail = true;
+            collision.GetComponent<HPlayerShip>().canCollideWithTrail = true;
         }
     }
 
