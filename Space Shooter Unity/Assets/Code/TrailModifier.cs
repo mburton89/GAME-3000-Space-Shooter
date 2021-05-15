@@ -11,7 +11,7 @@ public class TrailModifier : MonoBehaviour
     private void Start()
     {
         speedBuffer = true;
-        InvokeRepeating("CreateTrail", 0, 0.03f);
+        InvokeRepeating("CreateTrail", 0, 0.01f);
     }
 
     void CreateTrail()
