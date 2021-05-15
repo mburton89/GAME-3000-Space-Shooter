@@ -827,6 +827,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powerup - Absorb
       objectReference: {fileID: 0}
+    - target: {fileID: 7208791232241608928, guid: bf2d60785bb18724fb7372d4f9c335f3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7208791232241608932, guid: bf2d60785bb18724fb7372d4f9c335f3, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1411,6 +1415,7 @@ MonoBehaviour:
   healthBar: {fileID: 134420832}
   waveText: {fileID: 1970926739}
   limiterText: {fileID: 1119535603}
+  specialText: {fileID: 1763092984}
 --- !u!114 &1365080915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1669,6 +1674,10 @@ MonoBehaviour:
   hasBulletLimit: 1
   numberOfAbsorbProjectiles: 0
   numberOfAllyProjectiles: 0
+  rope: {fileID: 0}
+  mace: {fileID: 0}
+  mineController: {fileID: 0}
+  currentSpecial: 0
 --- !u!114 &1426788168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1867,7 +1876,7 @@ GameObject:
   - component: {fileID: 1763092985}
   - component: {fileID: 1763092984}
   m_Layer: 5
-  m_Name: TMP - MinesLeft
+  m_Name: TMP - Special
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1887,10 +1896,10 @@ RectTransform:
   m_Father: {fileID: 1365080918}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -74.1, y: -81.19}
-  m_SizeDelta: {x: 435, y: 50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 154.8, y: -49.1}
+  m_SizeDelta: {x: 315, y: 50}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1763092984
 MonoBehaviour:
@@ -1912,7 +1921,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mines Left: 5'
+  m_text: +3 Convert to Ally Projectiles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 234d93ad71223f04ea7650142be4dc6f, type: 2}
   m_sharedMaterial: {fileID: -8993920439833094561, guid: 234d93ad71223f04ea7650142be4dc6f, type: 2}
@@ -1939,14 +1948,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 13.2
+  m_fontSizeBase: 13.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2588,6 +2597,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 1819149247999894977, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1819149247999895034, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -2634,6 +2647,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
+--- !u!1 &1819149247911862363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1819149247999894977, guid: 37cc8c7360a0a8441a5ebd72090417d8, type: 3}
+  m_PrefabInstance: {fileID: 1819149247911862362}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6227067149749431252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2702,6 +2720,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powerup - Ally
       objectReference: {fileID: 0}
+    - target: {fileID: 8414591104906581787, guid: fa4a2659207f2bc4b8ad5a4b189a3157, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8414591104906581791, guid: fa4a2659207f2bc4b8ad5a4b189a3157, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2759,6 +2781,22 @@ PrefabInstance:
       propertyPath: _ball
       value: 
       objectReference: {fileID: 457655712}
+    - target: {fileID: 4591724812380165685, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862176847425051776, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+      propertyPath: mace
+      value: 
+      objectReference: {fileID: 1819149247911862363}
+    - target: {fileID: 6862176847425051776, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+      propertyPath: rope
+      value: 
+      objectReference: {fileID: 8388722084649256325}
+    - target: {fileID: 6862176847425051776, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+      propertyPath: mineController
+      value: 
+      objectReference: {fileID: 8388722084649256324}
     - target: {fileID: 6862176847425051778, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2813,6 +2851,22 @@ PrefabInstance:
       objectReference: {fileID: 1763092984}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+--- !u!114 &8388722084649256324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8388722083201657106, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+  m_PrefabInstance: {fileID: 8388722084649256323}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 671f02ea965696848a2174620032f123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8388722084649256325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4591724812380165685, guid: 38ebb3a00a348d848aeb9978405eba14, type: 3}
+  m_PrefabInstance: {fileID: 8388722084649256323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8985642055268707529
 PrefabInstance:
   m_ObjectHideFlags: 0

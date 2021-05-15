@@ -11,6 +11,7 @@ public class HUD : MonoBehaviour
     public Image healthBar;
     public TextMeshProUGUI waveText;
     public TextMeshProUGUI limiterText;
+    public TextMeshProUGUI specialText;
 
     void Awake()
     {

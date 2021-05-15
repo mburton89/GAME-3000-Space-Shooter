@@ -16,7 +16,7 @@ public class TrailCollision : MonoBehaviour
     private void Start()
     {
         initializationTime = Time.timeSinceLevelLoad;
-        Destroy(gameObject, 2.5f);
+        Destroy(gameObject, 3f);
     }
 
     private void Update()
@@ -67,6 +67,6 @@ public class TrailCollision : MonoBehaviour
         {
             trailAttack.changeScale(timeSinceInitHalf);
         }
-        FindObjectOfType<PlayerShip>().startBuffer();
+        FindObjectOfType<HPlayerShip>().startBuffer();
     }
 }

@@ -10,9 +10,14 @@ public class PlayerShip : Ship
     public bool hasBulletLimit; //on/off switch for the bullet limit challenege.
     public int numberOfAbsorbProjectiles;
     public int numberOfAllyProjectiles;
+    public int numberOfMines;
 
     public GameObject rope;
     public GameObject mace;
+
+    public DropProxMine mineController;
+
+    bool canDash;
 
     public enum Special
     {
@@ -29,6 +34,8 @@ public class PlayerShip : Ship
     {
         currentAmmo = 0;
         UpdateHud();
+        DecideSpecial();
+        canDash = true;
     }
 
     void Update()
@@ -58,24 +65,77 @@ public class PlayerShip : Ship
             }
             else//if the bullet limiter is not cheecked
             {
-                if (numberOfAbsorbProjectiles > 0)
-                {
-                    FireAbsorbProjectile();
-                }
-                else if (numberOfAllyProjectiles > 0)
-                {
-                    FireAllyProjectile();
-                }
-                else
-                {
+                //if (numberOfAbsorbProjectiles > 0)
+                //{
+                //    FireAbsorbProjectile();
+                //}
+                //else if (numberOfAllyProjectiles > 0)
+                //{
+                //    FireAllyProjectile();
+                //}
+                //else
+                //{
                     FireProjectile();
-                }
+                //}
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             UseSpecial();
+        }
+    }
+
+    public void DecideSpecial()
+    {
+        int rand = Random.Range(0, 5);
+        if (rand == 0)
+        {
+            currentSpecial = Special.absorb;
+            rope.SetActive(false);
+            mace.SetActive(false);
+            mineController.enabled = false;
+            canDash = false;
+            numberOfAbsorbProjectiles += 3;
+            HUD.Instance.specialText.SetText("+3 Absorb Health Projectiles");
+        }
+        else if (rand == 1)
+        {
+            currentSpecial = Special.ally;
+            rope.SetActive(false);
+            mace.SetActive(false);
+            mineController.enabled = false;
+            canDash = false;
+            numberOfAllyProjectiles ++;
+            HUD.Instance.specialText.SetText("+1 Convert To Ally Projectile");
+        }
+        else if (rand == 2)
+        {
+            currentSpecial = Special.dash;
+            rope.SetActive(false);
+            mace.SetActive(false);
+            mineController.enabled = false;
+            canDash = true;
+            HUD.Instance.specialText.SetText("Dash");
+        }
+        else if (rand == 3)
+        {
+            currentSpecial = Special.mines;
+            rope.SetActive(false);
+            mace.SetActive(false);
+            mineController.enabled = true;
+            canDash = false;
+            HUD.Instance.specialText.SetText("+5 Mines");
+            numberOfMines += 5;
+        }
+        else if (rand == 4)
+        {
+            currentSpecial = Special.mace;
+            rope.SetActive(true);
+            mace.SetActive(true);
+            mineController.enabled = false;
+            canDash = false;
+            HUD.Instance.specialText.SetText("Mace");
         }
     }
 
@@ -87,19 +147,18 @@ public class PlayerShip : Ship
         }
         else if (currentSpecial == Special.ally && numberOfAllyProjectiles > 0)
         {
-
+            FireAllyProjectile();
         }
         else if (currentSpecial == Special.dash)
         {
-
+            if (canDash)
+            {
+                StartCoroutine(DashCo());
+            }
         }
-        else if (currentSpecial == Special.mines)
+        else if (currentSpecial == Special.mines && numberOfMines > 0)
         {
-
-        }
-        else if (currentSpecial == Special.mace)
-        {
-
+            mineController.DropMine();
         }
     }
 
@@ -144,5 +203,20 @@ public class PlayerShip : Ship
     public void UpdateHud()
     {
         HUD.Instance.UpdateAmmoCountText(currentAmmo, maxAmmo);
+    }
+
+    private IEnumerator DashCo()
+    {
+        canDash = false;
+        canTakeDamage = false;
+        float initialSpeed = maxSpeed;
+        float initialAcceleration = acceleration;
+        maxSpeed *= 10;
+        acceleration *= 10;
+        yield return new WaitForSeconds(0.5f);
+        maxSpeed = initialSpeed;
+        acceleration = initialAcceleration;
+        canDash = true;
+        canTakeDamage = true;
     }
 }

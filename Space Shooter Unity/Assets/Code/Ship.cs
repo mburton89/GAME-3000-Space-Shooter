@@ -31,10 +31,13 @@ public abstract class Ship : MonoBehaviour
     [HideInInspector] public Vector3 previousPosition;
     [HideInInspector] public Vector3 currentPosition;
 
+    [HideInInspector] public bool canTakeDamage;
+
     public void Awake()
     {
         currentArmor = maxArmor;
         canShoot = true;
+        canTakeDamage = true;
     }
 
     public void Update()
@@ -98,16 +101,19 @@ public abstract class Ship : MonoBehaviour
 
     public void TakeDamage(int damageToTake)
     {
-        currentArmor -= damageToTake;
-        hitSound.Play();
-        if (currentArmor <= 0)
+        if (canTakeDamage)
         {
-            Explode();
-        }
+            currentArmor -= damageToTake;
+            hitSound.Play();
+            if (currentArmor <= 0)
+            {
+                Explode();
+            }
 
-        if (GetComponent<PlayerShip>())
-        {
-            HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+            if (GetComponent<PlayerShip>())
+            {
+                HUD.Instance.UpdateHealthBar(currentArmor, maxArmor);
+            }
         }
     }
 

@@ -26,27 +26,39 @@ public class DropProxMine : MonoBehaviour
         
     }
 
-    public void Update()
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space) && canDrop == true)
+    //    {
+    //        Projectile proxMine = Instantiate(proxMinePrefab, mineSpawnPoint.position, transform.rotation)as Projectile;
+    //        proxMine.Init(GetComponent<PlayerShip>().gameObject);
+
+    //        Vector3 shipVelocity = new Vector3();
+    //        shipVelocity = FindObjectOfType<PlayerShip>().rigidBody2D.velocity;
+    //        proxMine.rigidBody2D.velocity = shipVelocity / 3;
+
+    //        minesLeftCounter--;
+    //        mineWarningText.SetText("Mines left: " + minesLeftCounter);
+    //    }
+
+    //    if (minesLeftCounter == 0 && canResetMines)
+    //    {
+    //        canResetMines = false;
+    //        StartCoroutine(MineDropWait());
+    //        mineWarningText.SetText("OUT OF MINES! RESTOCK!");
+    //    }
+    //}
+
+    public void DropMine()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canDrop == true)
-        {
-            Projectile proxMine = Instantiate(proxMinePrefab, mineSpawnPoint.position, transform.rotation)as Projectile;
-            proxMine.Init(GetComponent<PlayerShip>().gameObject);
+        Projectile proxMine = Instantiate(proxMinePrefab, mineSpawnPoint.position, transform.rotation) as Projectile;
+        proxMine.Init(GetComponent<PlayerShip>().gameObject);
 
-            Vector3 shipVelocity = new Vector3();
-            shipVelocity = FindObjectOfType<PlayerShip>().rigidBody2D.velocity;
-            proxMine.rigidBody2D.velocity = shipVelocity / 3;
+        Vector3 shipVelocity = new Vector3();
+        shipVelocity = FindObjectOfType<PlayerShip>().rigidBody2D.velocity;
+        proxMine.rigidBody2D.velocity = shipVelocity / 3;
 
-            minesLeftCounter--;
-            mineWarningText.SetText("Mines left: " + minesLeftCounter);
-        }
-
-        if (minesLeftCounter == 0 && canResetMines)
-        {
-            canResetMines = false;
-            StartCoroutine(MineDropWait());
-            mineWarningText.SetText("OUT OF MINES! RESTOCK!");
-        }
+        FindObjectOfType<PlayerShip>().numberOfMines--;
     }
 
     private IEnumerator MineDropWait()

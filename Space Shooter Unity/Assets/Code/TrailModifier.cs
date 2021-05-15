@@ -26,7 +26,7 @@ public class TrailModifier : MonoBehaviour
             speedBuffer = true;
         }
 
-        if (!speedBuffer && GetComponent<PlayerShip>().ringOfFire)
+        if (!speedBuffer && GetComponent<HPlayerShip>().ringOfFire)
         {
             TrailCollision trailColl = Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation) as TrailCollision;
             Instantiate(trailCollisionPrefab, trailCollisionSpawnPoint.position, transform.rotation);

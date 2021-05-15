@@ -28,7 +28,7 @@ public class TrailAttack : MonoBehaviour
     {
         if (collision.GetComponent<HEnemyShip>())
         {
-            collision.GetComponent<HEnemyShip>().canShake = false;
+            //collision.GetComponent<HEnemyShip>().canShake = false;
             collision.GetComponent<HEnemyShip>().Explode();
         }
     }

@@ -56,5 +56,10 @@ public class EnemyShipSpawner : MonoBehaviour
 
             Instantiate(enemyShipPrefabs[rand], SpawnPoint.position, transform.rotation, null);
         }
+
+        if (FindObjectOfType<PlayerShip>() != null)
+        {
+            FindObjectOfType<PlayerShip>().DecideSpecial();
+        }
     }
 }
