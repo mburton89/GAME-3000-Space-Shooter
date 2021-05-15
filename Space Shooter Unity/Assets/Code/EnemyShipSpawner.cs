@@ -23,11 +23,18 @@ public class EnemyShipSpawner : MonoBehaviour
 
     public void CountEnemyShips()
     {
+        StartCoroutine(CountEnemyShipsCo());
+    }
+
+    private IEnumerator CountEnemyShipsCo()
+    {
+        yield return new WaitForSeconds(0.2f);
+
         int currentShips = FindObjectsOfType<EnemyShip>().Length;
 
-        print(currentShips);
+        print("currentShips: " + currentShips);
 
-        if (currentShips == 1)
+        if (currentShips <= 0)
         {
             currentWave++;
             HUD.Instance.UpdateWaveText(currentWave);
